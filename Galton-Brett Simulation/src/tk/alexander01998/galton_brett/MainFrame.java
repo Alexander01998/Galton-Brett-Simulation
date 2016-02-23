@@ -76,7 +76,7 @@ public class MainFrame extends JFrame
 		JScrollPane scrollPane = new JScrollPane();
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 		
-		JPanel panel = new JPanel();
+		SimulationPanel panel = new SimulationPanel();
 		scrollPane.setViewportView(panel);
 	}
 }
