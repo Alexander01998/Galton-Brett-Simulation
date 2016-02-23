@@ -14,9 +14,9 @@ import javax.imageio.ImageIO;
 
 public class TextureManager
 {
-	public static BufferedImage HINTERGRUND = getTexture("hintergrund");
-	public static BufferedImage KUGEL = getTexture("kugel");
-	public static BufferedImage KEIL_DREIECK = getTexture("keil-dreieck");
+	public static BufferedImage BACKGROUND = getTexture("hintergrund");
+	public static BufferedImage MARBLE = getTexture("kugel");
+	public static BufferedImage WEDGE_TRIANGLE = getTexture("keil-dreieck");
 	
 	public static BufferedImage getTexture(String name)
 	{

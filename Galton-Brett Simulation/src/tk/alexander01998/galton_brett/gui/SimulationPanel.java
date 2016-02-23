@@ -27,6 +27,6 @@ public class SimulationPanel extends JPanel
 		super.paint(g);
 		for(int x = 0; x < getWidth(); x += 80)
 			for(int y = 0; y < getHeight(); y += 80)
-				g.drawImage(TextureManager.HINTERGRUND, x, y, null);
+				g.drawImage(TextureManager.BACKGROUND, x, y, null);
 	}
 }
