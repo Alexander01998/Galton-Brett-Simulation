@@ -7,6 +7,8 @@
  */
 package tk.alexander01998.galton_brett;
 
+import java.awt.Graphics;
+
 import javax.swing.JPanel;
 
 public class SimulationPanel extends JPanel
@@ -15,7 +17,16 @@ public class SimulationPanel extends JPanel
 	 * Create the panel.
 	 */
 	public SimulationPanel()
-	{
+	{	
 		
+	}
+	
+	@Override
+	public void paint(Graphics g)
+	{
+		super.paint(g);
+		for(int x = 0; x < getWidth(); x += 80)
+			for(int y = 0; y < getHeight(); y += 80)
+				g.drawImage(TextureManager.HINTERGRUND, x, y, null);
 	}
 }
