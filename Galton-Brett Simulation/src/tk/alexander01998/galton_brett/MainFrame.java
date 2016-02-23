@@ -8,48 +8,17 @@
 package tk.alexander01998.galton_brett;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 public class MainFrame extends JFrame
 {
 	private JPanel contentPane;
-	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args)
-	{
-		try
-		{
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		}catch(Exception e1)
-		{
-			e1.printStackTrace();
-		}
-		EventQueue.invokeLater(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				try
-				{
-					MainFrame frame = new MainFrame();
-					frame.setVisible(true);
-				}catch(Exception e)
-				{
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 	
 	/**
 	 * Create the frame.
