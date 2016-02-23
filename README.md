@@ -28,6 +28,8 @@ Wenn die Zeit es zulässt, möchte ich außerdem folgende Features in das Programm 
 
 - Das Programm soll eine Website haben.
 
+- Das Programm soll bei einem Fehler eine Fehlermeldung anzeigen.
+
 ## Issues und Pull Requests
 Da ich das Programm alleine erstellen muss, kann ich bei diesem Projekt keine Pull Requests annehmen. Es sollte allerdings kein Problem sein, wenn ich über den Issue Tracker Fragen beantworte.
 
