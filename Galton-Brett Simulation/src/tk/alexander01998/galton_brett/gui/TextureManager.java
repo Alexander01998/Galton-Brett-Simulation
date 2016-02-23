@@ -26,7 +26,7 @@ public class TextureManager
 				.getResourceAsStream("textures/" + name + ".png"));
 		}catch(IOException e)
 		{
-			// TODO: Fehlermeldungen
+			// TODO: error messages
 			e.printStackTrace();
 		}
 		return null;
