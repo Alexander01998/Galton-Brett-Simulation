@@ -18,7 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-public class GaltonBrett extends JFrame
+public class MainFrame extends JFrame
 {
 	private JPanel contentPane;
 	
@@ -41,7 +41,7 @@ public class GaltonBrett extends JFrame
 			{
 				try
 				{
-					GaltonBrett frame = new GaltonBrett();
+					MainFrame frame = new MainFrame();
 					frame.setVisible(true);
 				}catch(Exception e)
 				{
@@ -54,7 +54,7 @@ public class GaltonBrett extends JFrame
 	/**
 	 * Create the frame.
 	 */
-	public GaltonBrett()
+	public MainFrame()
 	{
 		setTitle("Galton-Brett Simulation");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
