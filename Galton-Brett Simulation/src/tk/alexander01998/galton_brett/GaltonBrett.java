@@ -11,6 +11,8 @@ import java.awt.EventQueue;
 
 import javax.swing.UIManager;
 
+import tk.alexander01998.galton_brett.gui.MainFrame;
+
 public class GaltonBrett
 {	
 	/**
