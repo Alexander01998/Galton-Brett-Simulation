@@ -16,19 +16,17 @@ Die Aufgabenstellung lautet wie folgt:
 
 - Die Simulation soll per Knopfdruck gestartet werden können.
 
-- Das Programm muss einen Erklärungstext beinhalten. (Ich werde den Lehrer nochmal fragen, was damit gemeint ist bzw. was dieser Text erklären soll.)
-
-Außerdem möchte ich folgende Features in das Programm einbauen:
+- Das Programm muss einen Erklärungstext beinhalten, in dem erklärt wird, was das Galtonische Brett ist, was `n` ist, usw.
 
 - Die Anzahl der Reihen `n` soll ebenfalls einstellbar sein.
 
+Wenn die Zeit es zulässt, möchte ich außerdem folgende Features in das Programm einbauen:
+
 - Die Simulation soll übersprungen werden können, falls sie bei vielen Kugeln oder Reihen zu lange dauert.
 
-Wenn die Zeit es zulässt, möchte ich evtl. auch noch folgende Ideen umsetzen:
+- Die Simulationsgeschwindigkeit soll einstellbar sein.
 
 - Das Programm soll eine Website haben.
-
-- Die Simulationsgeschwindigkeit soll einstellbar sein.
 
 ## Issues und Pull Requests
 Da ich das Programm alleine erstellen muss, kann ich bei diesem Projekt keine Pull Requests annehmen. Es sollte allerdings kein Problem sein, wenn ich über den Issue Tracker Fragen beantworte.
