@@ -16,7 +16,7 @@ public class TextureManager
 {
 	public static BufferedImage BACKGROUND = getTexture("hintergrund");
 	public static BufferedImage MARBLE = getTexture("kugel");
-	public static BufferedImage WEDGE_TRIANGLE = getTexture("keil-dreieck");
+	public static BufferedImage WEDGE = getTexture("keil");
 	public static BufferedImage TUBE = getTexture("roehre");
 	
 	public static BufferedImage getTexture(String name)
