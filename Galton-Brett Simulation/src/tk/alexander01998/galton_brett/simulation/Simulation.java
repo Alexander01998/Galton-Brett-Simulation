@@ -16,7 +16,7 @@ public class Simulation
 	
 	public Simulation(int n)
 	{
-		grid = new Entity[n + 1][n * 2 + 4];
+		grid = new Entity[n * 2 + 1][n * 2 + 4];
 		for(int y = 0; y < n; y++)
 		{
 			for(int x = 0; x < y + 1; x++)
