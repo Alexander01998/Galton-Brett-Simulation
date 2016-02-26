@@ -35,8 +35,6 @@ public class SimulationPanel extends JPanel
 	public void render(float partialTicks)
 	{
 		this.partialTicks = partialTicks;
-		// paintImmediately() will hopefully paint the panel in this thread,
-		// unlike repaint().
-		paintImmediately(getVisibleRect());
+		repaint();
 	}
 }
