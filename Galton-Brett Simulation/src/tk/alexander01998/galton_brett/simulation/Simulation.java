@@ -12,7 +12,7 @@ import tk.alexander01998.galton_brett.GaltonBrett;
 public class Simulation
 {
 	private boolean running;
-	private Entity[][] grid;
+	public Entity[][] grid;
 	
 	public Simulation(int n)
 	{

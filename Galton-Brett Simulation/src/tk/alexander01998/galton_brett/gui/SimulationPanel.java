@@ -11,6 +11,9 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import tk.alexander01998.galton_brett.GaltonBrett;
+import tk.alexander01998.galton_brett.simulation.Entity;
+
 public class SimulationPanel extends JPanel
 {
 	private float partialTicks;
@@ -30,6 +33,16 @@ public class SimulationPanel extends JPanel
 		for(int x = 0; x < getWidth(); x += 80)
 			for(int y = 0; y < getHeight(); y += 80)
 				g.drawImage(TextureManager.BACKGROUND, x, y, null);
+		Entity[][] grid = GaltonBrett.simulation.grid;
+		for(int x = 0; x < grid.length; x++)
+		{
+			for(int y = 0; y < grid[x].length; y++)
+			{
+				Entity entity = grid[x][y];
+				if(entity != null)
+					entity.render(g, x, y);
+			}
+		}
 	}
 	
 	public void render(float partialTicks)
