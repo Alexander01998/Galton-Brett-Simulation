@@ -15,6 +15,8 @@ import tk.alexander01998.galton_brett.gui.MainFrame;
 
 public class GaltonBrett
 {	
+	public static MainFrame frame;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -34,7 +36,7 @@ public class GaltonBrett
 			{
 				try
 				{
-					MainFrame frame = new MainFrame();
+					frame = new MainFrame();
 					frame.setVisible(true);
 				}catch(Exception e)
 				{

@@ -7,6 +7,8 @@
  */
 package tk.alexander01998.galton_brett.simulation;
 
+import tk.alexander01998.galton_brett.GaltonBrett;
+
 public class Simulation
 {
 	private boolean running;
@@ -41,7 +43,7 @@ public class Simulation
 			
 			// render (60Hz)
 			float partialTicks = frameStart - lastTick / 50;
-			// TODO: repaint panel
+			GaltonBrett.frame.simulationPanel.render(partialTicks);
 			
 			sleepTime = frameStart + 16 - System.currentTimeMillis();
 			if(sleepTime > 0)

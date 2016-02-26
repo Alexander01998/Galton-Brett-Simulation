@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 
 public class SimulationPanel extends JPanel
 {
+	private float partialTicks;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -28,5 +30,13 @@ public class SimulationPanel extends JPanel
 		for(int x = 0; x < getWidth(); x += 80)
 			for(int y = 0; y < getHeight(); y += 80)
 				g.drawImage(TextureManager.BACKGROUND, x, y, null);
+	}
+	
+	public void render(float partialTicks)
+	{
+		this.partialTicks = partialTicks;
+		// paintImmediately() will hopefully paint the panel in this thread,
+		// unlike repaint().
+		paintImmediately(getVisibleRect());
 	}
 }
