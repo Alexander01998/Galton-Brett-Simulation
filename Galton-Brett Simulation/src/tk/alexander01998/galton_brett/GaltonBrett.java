@@ -12,10 +12,12 @@ import java.awt.EventQueue;
 import javax.swing.UIManager;
 
 import tk.alexander01998.galton_brett.gui.MainFrame;
+import tk.alexander01998.galton_brett.simulation.Simulation;
 
 public class GaltonBrett
 {	
 	public static MainFrame frame;
+	public static Simulation simulation;
 	
 	/**
 	 * Launch the application.
@@ -44,5 +46,13 @@ public class GaltonBrett
 				}
 			}
 		});
+		try
+		{
+			simulation = new Simulation(3);
+			simulation.run();
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 }

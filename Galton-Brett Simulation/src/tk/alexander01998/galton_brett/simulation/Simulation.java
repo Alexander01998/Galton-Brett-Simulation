@@ -26,7 +26,7 @@ public class Simulation
 		}
 	}
 	
-	private void run()
+	public void run()
 	{
 		running = true;
 		long frameStart, sleepTime, lastTick = 0;
