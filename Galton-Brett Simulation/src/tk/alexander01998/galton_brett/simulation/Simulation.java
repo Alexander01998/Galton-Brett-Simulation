@@ -52,7 +52,7 @@ public class Simulation
 	public void run()
 	{
 		running = true;
-		long frameStart, sleepTime, lastTick = 0;
+		long frameStart, lastTick = 0, lastFrame = 0, sleepTime;
 		while(running)
 		{
 			frameStart = System.currentTimeMillis();
@@ -60,19 +60,29 @@ public class Simulation
 			// tick (20Hz)
 			if(frameStart >= lastTick + 50)
 			{
+				// System.out.println(System.currentTimeMillis() % 1000);
 				runTick();
 				lastTick = frameStart;
 			}
 			
-			// render (60Hz)
-			float partialTicks = frameStart - lastTick / 50;
-			GaltonBrett.frame.simulationPanel.render(partialTicks);
+			// render (62.5Hz)
+			if(frameStart >= lastFrame + 16)
+			{
+				// System.out.println(System.currentTimeMillis() % 1000);
+				float partialTicks = frameStart - lastTick / 50;
+				GaltonBrett.frame.simulationPanel.render(partialTicks);
+				lastFrame = frameStart;
+			}
 			
-			sleepTime = frameStart + 16 - System.currentTimeMillis();
-			if(sleepTime > 0)
+			// sleep
+			sleepTime =
+				Math.min(lastFrame + 16 - System.currentTimeMillis(), lastTick
+					+ 50 - System.currentTimeMillis());
+			// System.out.println(sleepTime);
+			if(sleepTime > 1)
 				try
 				{
-					Thread.sleep(sleepTime);
+					Thread.sleep(sleepTime - 1);
 				}catch(InterruptedException e)
 				{
 					e.printStackTrace();
@@ -81,7 +91,7 @@ public class Simulation
 	}
 	
 	private void runTick()
-	{	
+	{
 		for(Marble marble : marbles)
 			marble.update();
 	}
