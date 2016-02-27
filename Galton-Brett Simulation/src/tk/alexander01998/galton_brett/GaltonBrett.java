@@ -13,6 +13,7 @@ import javax.swing.UIManager;
 
 import tk.alexander01998.galton_brett.gui.MainFrame;
 import tk.alexander01998.galton_brett.simulation.Simulation;
+import tk.alexander01998.galton_brett.sounds.SoundManager;
 
 public class GaltonBrett
 {	
@@ -48,6 +49,7 @@ public class GaltonBrett
 		});
 		try
 		{
+			SoundManager.initialize();
 			simulation = new Simulation(3, 0.5F);
 			simulation.run();
 		}catch(Exception e)
