@@ -19,9 +19,12 @@ public class Simulation
 	public Entity[][] grid;
 	public ArrayList<Marble> marbles = new ArrayList<>();
 	public double tickTime, frameTime;
+	private float p;
 	
-	public Simulation(int n)
+	public Simulation(int n, float p)
 	{
+		this.p = p;
+		
 		// add wedges
 		grid = new Entity[n * 2 + 1][n * 2 + 4];
 		for(int y = 0; y < n; y++)
@@ -100,5 +103,10 @@ public class Simulation
 	{
 		for(Marble marble : marbles)
 			marble.update();
+	}
+
+	public float getP()
+	{
+		return p;
 	}
 }

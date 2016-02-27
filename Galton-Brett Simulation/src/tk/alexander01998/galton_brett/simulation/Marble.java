@@ -70,7 +70,10 @@ public class Marble
 			if(posY < grid[0].length - 1)
 				if(grid[posX][posY + 1] instanceof Wedge)
 				{
-					posX++;
+					if(Math.random() < GaltonBrett.simulation.getP())
+						posX++;
+					else
+						posX--;
 					posY += 2;
 					timer = 40;
 					timerMax = 40;

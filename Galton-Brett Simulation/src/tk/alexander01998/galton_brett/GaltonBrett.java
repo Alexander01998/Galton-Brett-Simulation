@@ -48,7 +48,7 @@ public class GaltonBrett
 		});
 		try
 		{
-			simulation = new Simulation(3);
+			simulation = new Simulation(3, 0.5F);
 			simulation.run();
 		}catch(Exception e)
 		{
