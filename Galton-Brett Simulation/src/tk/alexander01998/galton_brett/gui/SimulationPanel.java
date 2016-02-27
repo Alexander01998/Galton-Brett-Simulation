@@ -43,6 +43,7 @@ public class SimulationPanel extends JPanel
 					entity.render(g, x, y);
 			}
 		}
+		g.drawRect(0, 0, grid.length * 64, grid[0].length * 64);
 	}
 	
 	public void render(float partialTicks)
