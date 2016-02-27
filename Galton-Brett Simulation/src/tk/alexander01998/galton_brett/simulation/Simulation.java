@@ -39,7 +39,7 @@ public class Simulation
 		}
 		
 		// add a marble
-		marbles.add(new Marble(0, 0));
+		marbles.add(new Marble(3, 0));
 		
 		// set panel size
 		Dimension size = new Dimension(grid.length * 64, grid[0].length * 64);
