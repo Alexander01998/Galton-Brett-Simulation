@@ -7,7 +7,10 @@
  */
 package tk.alexander01998.galton_brett.simulation;
 
+import java.awt.Dimension;
+
 import tk.alexander01998.galton_brett.GaltonBrett;
+import tk.alexander01998.galton_brett.gui.SimulationPanel;
 
 public class Simulation
 {
@@ -24,6 +27,14 @@ public class Simulation
 				grid[n - y + x * 2][y * 2 + 1] = new Wedge();
 			}
 		}
+		
+		// set panel size
+		Dimension size = new Dimension(grid.length * 64, grid[0].length * 64);
+		SimulationPanel simulationPanel = GaltonBrett.frame.simulationPanel;
+		simulationPanel.setSize(size);
+		simulationPanel.setMinimumSize(size);
+		simulationPanel.setPreferredSize(size);
+		simulationPanel.setMaximumSize(size);
 	}
 	
 	public void run()
