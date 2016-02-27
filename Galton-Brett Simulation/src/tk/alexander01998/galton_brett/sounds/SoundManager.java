@@ -14,9 +14,9 @@ import javafx.scene.media.MediaPlayer;
 @SuppressWarnings("restriction")
 public class SoundManager
 {
-	public static final Media KUGEL_AUF_HOLZ = getSound("kugel-auf-holz");
-	public static final Media KUGEL_AUF_GLAS = getSound("kugel-auf-glas");
-	public static final Media KUGEL_AUF_KUGEL = getSound("kugel-auf-kugel");
+	public static final Media MARBLE_ON_WOOD = getSound("kugel-auf-holz");
+	public static final Media MARBLE_ON_GLASS = getSound("kugel-auf-glas");
+	public static final Media MARBLE_ON_MARBLE = getSound("kugel-auf-kugel");
 	
 	public static void initialize()
 	{
