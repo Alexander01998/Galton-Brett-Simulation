@@ -14,10 +14,10 @@ import javax.imageio.ImageIO;
 
 public class TextureManager
 {
-	public static BufferedImage BACKGROUND = getTexture("hintergrund");
-	public static BufferedImage MARBLE = getTexture("kugel");
-	public static BufferedImage WEDGE = getTexture("keil");
-	public static BufferedImage TUBE = getTexture("roehre");
+	public static final BufferedImage BACKGROUND = getTexture("hintergrund");
+	public static final BufferedImage MARBLE = getTexture("kugel");
+	public static final BufferedImage WEDGE = getTexture("keil");
+	public static final BufferedImage TUBE = getTexture("roehre");
 	
 	public static BufferedImage getTexture(String name)
 	{
