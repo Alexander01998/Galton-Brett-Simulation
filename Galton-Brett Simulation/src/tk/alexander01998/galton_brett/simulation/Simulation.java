@@ -18,6 +18,7 @@ public class Simulation
 	private boolean running;
 	public Entity[][] grid;
 	public ArrayList<Marble> marbles = new ArrayList<>();
+	public double tickTime, frameTime;
 	
 	public Simulation(int n)
 	{
@@ -52,33 +53,38 @@ public class Simulation
 	public void run()
 	{
 		running = true;
-		long frameStart, lastTick = 0, lastFrame = 0, sleepTime;
+		long cycleStart, tickStart, frameStart, lastTick = 0, lastFrame = 0, sleepTime;
 		while(running)
 		{
-			frameStart = System.currentTimeMillis();
+			cycleStart = System.currentTimeMillis();
 			
 			// tick (20Hz)
-			if(frameStart >= lastTick + 50)
+			if(cycleStart >= lastTick + 50)
 			{
-				// System.out.println(System.currentTimeMillis() % 1000);
+				tickStart = System.nanoTime();
+				
 				runTick();
-				lastTick = frameStart;
+				
+				lastTick = cycleStart;
+				tickTime = (System.nanoTime() - tickStart) * 1e-6;
 			}
 			
 			// render (62.5Hz)
-			if(frameStart >= lastFrame + 16)
+			if(cycleStart >= lastFrame + 16)
 			{
-				// System.out.println(System.currentTimeMillis() % 1000);
-				float partialTicks = frameStart - lastTick / 50;
+				frameStart = System.nanoTime();
+				
+				float partialTicks = cycleStart - lastTick / 50;
 				GaltonBrett.frame.simulationPanel.render(partialTicks);
-				lastFrame = frameStart;
+				
+				lastFrame = cycleStart;
+				frameTime = (System.nanoTime() - frameStart) * 1e-6;
 			}
 			
 			// sleep
 			sleepTime =
 				Math.min(lastFrame + 16 - System.currentTimeMillis(), lastTick
 					+ 50 - System.currentTimeMillis());
-			// System.out.println(sleepTime);
 			if(sleepTime > 1)
 				try
 				{
