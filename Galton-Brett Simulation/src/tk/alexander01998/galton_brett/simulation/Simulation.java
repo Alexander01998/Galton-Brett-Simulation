@@ -74,7 +74,7 @@ public class Simulation
 			{
 				frameStart = System.nanoTime();
 				
-				float partialTicks = cycleStart - lastTick / 50;
+				float partialTicks = (float)(cycleStart - lastTick) / 50F;
 				GaltonBrett.frame.simulationPanel.render(partialTicks);
 				
 				lastFrame = cycleStart;
