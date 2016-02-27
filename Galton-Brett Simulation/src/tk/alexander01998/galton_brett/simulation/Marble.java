@@ -30,23 +30,25 @@ public class Marble
 	
 	public void render(Graphics g, float partialTicks)
 	{
-		g.drawImage(TextureManager.MARBLE, posX * 64, posY * 64, null);
+		float factor = (20F - (float)timer + partialTicks) / 20F;
+		g.drawImage(TextureManager.MARBLE, (int)(posX * 64 * factor + oldPosX
+			* 64 * (1 - factor)), (int)(posY * 64 * factor + oldPosY * 64
+			* (1 - factor)), null);
 	}
 	
 	public void update()
 	{
-		if(timer == 0)
+		timer--;
+		if(timer <= 0)
 		{
+			oldPosX = posX;
+			oldPosY = posY;
+			
 			Entity[][] grid = GaltonBrett.simulation.grid;
 			if(posY < grid[0].length - 1
 				&& !(grid[posX][posY + 1] instanceof Wedge))
-			{
-				oldPosX = posX;
-				oldPosY = posY;
 				posY++;
-			}
 			timer = 20;
-		}else
-			timer--;
+		}
 	}
 }
