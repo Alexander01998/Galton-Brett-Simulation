@@ -32,6 +32,12 @@ public class SimulationPanel extends JPanel
 	{
 		super.paint(g);
 		
+		if(GaltonBrett.simulation == null)
+		{
+			g.drawString("Wird geladen...", 4, 16);
+			return;
+		}
+		
 		// background
 		for(int x = 0; x < getWidth(); x += 256)
 			for(int y = 0; y < getHeight(); y += 256)
