@@ -60,28 +60,41 @@ public class Marble
 	
 	public void update()
 	{
-		timer--;
+		if(timer > 0)
+			timer--;
 		if(timer <= 0)
 		{
 			oldPosX = posX;
 			oldPosY = posY;
 			
 			Entity[][] grid = GaltonBrett.simulation.grid;
-			if(posY < grid[0].length - 1)
-				if(grid[posX][posY + 1] instanceof Wedge)
+			
+			if(posY >= grid[0].length - 1)
+				return;
+			
+			if(grid[posX][posY + 1] instanceof Wedge)
+			{
+				if(Math.random() < GaltonBrett.simulation.getP())
+					posX++;
+				else
+					posX--;
+				posY += 2;
+				timer = 20;
+				timerMax = 20;
+			}else
+			{
+				posY++;
+				timer = 5;
+				timerMax = 5;
+			}
+			
+			for(Marble marble : GaltonBrett.simulation.marbles)
+				if(marble != this && marble.posX == posX && marble.posY == posY)
 				{
-					if(Math.random() < GaltonBrett.simulation.getP())
-						posX++;
-					else
-						posX--;
-					posY += 2;
-					timer = 20;
-					timerMax = 20;
-				}else
-				{
-					posY++;
-					timer = 5;
-					timerMax = 5;
+					posX = oldPosX;
+					posY = oldPosY;
+					timer = 0;
+					timerMax = 0;
 				}
 		}
 	}
