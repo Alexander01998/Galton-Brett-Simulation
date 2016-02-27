@@ -9,14 +9,18 @@ package tk.alexander01998.galton_brett.simulation;
 
 import java.awt.Graphics;
 
+import javafx.scene.media.Media;
 import tk.alexander01998.galton_brett.GaltonBrett;
 import tk.alexander01998.galton_brett.gui.TextureManager;
+import tk.alexander01998.galton_brett.sounds.SoundManager;
 
+@SuppressWarnings("restriction")
 public class Marble
 {
 	private int posX, posY;
 	private int oldPosX, oldPosY;
 	private int timer, timerMax;
+	private Media nextSound;
 	
 	public Marble(int posX, int posY)
 	{
@@ -67,6 +71,12 @@ public class Marble
 			oldPosX = posX;
 			oldPosY = posY;
 			
+			if(nextSound != null)
+			{
+				SoundManager.play(nextSound);
+				nextSound = null;
+			}
+			
 			Entity[][] grid = GaltonBrett.simulation.grid;
 			
 			if(posY >= grid[0].length - 1)
@@ -86,7 +96,17 @@ public class Marble
 				posY++;
 				timer = 5;
 				timerMax = 5;
+				
 			}
+			
+			if(posY == grid[0].length - 1)
+				nextSound = SoundManager.MARBLE_ON_GLASS;
+			else if(grid[posX][posY + 1] instanceof Wedge)
+				nextSound = SoundManager.MARBLE_ON_WOOD;
+			else
+				for(Marble marble : GaltonBrett.simulation.marbles)
+					if(marble.posX == posX && marble.posY == posY + 1)
+						nextSound = SoundManager.MARBLE_ON_MARBLE;
 			
 			for(Marble marble : GaltonBrett.simulation.marbles)
 				if(marble != this && marble.posX == posX && marble.posY == posY)
@@ -95,6 +115,7 @@ public class Marble
 					posY = oldPosY;
 					timer = 0;
 					timerMax = 0;
+					nextSound = null;
 				}
 		}
 	}
