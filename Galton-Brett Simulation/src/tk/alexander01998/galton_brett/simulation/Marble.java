@@ -75,13 +75,13 @@ public class Marble
 					else
 						posX--;
 					posY += 2;
-					timer = 40;
-					timerMax = 40;
+					timer = 20;
+					timerMax = 20;
 				}else
 				{
 					posY++;
-					timer = 20;
-					timerMax = 20;
+					timer = 5;
+					timerMax = 5;
 				}
 		}
 	}
