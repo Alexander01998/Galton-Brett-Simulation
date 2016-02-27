@@ -18,6 +18,7 @@ import tk.alexander01998.galton_brett.simulation.Marble;
 public class SimulationPanel extends JPanel
 {
 	private float partialTicks;
+	private Thread thread;
 	
 	/**
 	 * Create the panel.
@@ -27,6 +28,7 @@ public class SimulationPanel extends JPanel
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public void paintComponent(Graphics g)
 	{
@@ -61,11 +63,22 @@ public class SimulationPanel extends JPanel
 		
 		// border
 		g.drawRect(0, 0, grid.length * 64, grid[0].length * 64);
+		
+		// continue simulation
+		thread.resume();
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void render(float partialTicks)
 	{
+		// set fields
 		this.partialTicks = partialTicks;
+		thread = Thread.currentThread();
+		
+		// schedule rendering
 		repaint();
+		
+		// wait for rendering
+		thread.suspend();
 	}
 }
