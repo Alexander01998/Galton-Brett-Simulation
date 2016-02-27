@@ -7,12 +7,33 @@
  */
 package tk.alexander01998.galton_brett.simulation;
 
+import java.awt.Graphics;
+
 import tk.alexander01998.galton_brett.gui.TextureManager;
 
-public class Marble extends Entity
+public class Marble
 {
-	public Marble()
+	private int posX;
+	private int posY;
+	private int oldPosX;
+	private int oldPosY;
+	private int timer;
+	
+	public Marble(int posX, int posY)
 	{
-		super(TextureManager.MARBLE);
+		this.posX = posX;
+		this.posY = posY;
+		this.oldPosX = posX;
+		this.oldPosY = posY;
+	}
+	
+	public void render(Graphics g, float partialTicks)
+	{
+		g.drawImage(TextureManager.MARBLE, posX * 64, posY * 64, null);
+	}
+	
+	public void update()
+	{	
+		
 	}
 }

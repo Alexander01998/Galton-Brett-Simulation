@@ -8,6 +8,7 @@
 package tk.alexander01998.galton_brett.simulation;
 
 import java.awt.Dimension;
+import java.util.ArrayList;
 
 import tk.alexander01998.galton_brett.GaltonBrett;
 import tk.alexander01998.galton_brett.gui.SimulationPanel;
@@ -16,9 +17,11 @@ public class Simulation
 {
 	private boolean running;
 	public Entity[][] grid;
+	public ArrayList<Marble> marbles = new ArrayList<>();
 	
 	public Simulation(int n)
 	{
+		// add wedges
 		grid = new Entity[n * 2 + 1][n * 2 + 4];
 		for(int y = 0; y < n; y++)
 		{
@@ -27,10 +30,15 @@ public class Simulation
 				grid[n - y + x * 2][y * 2 + 1] = new Wedge();
 			}
 		}
+		
+		// add tubes
 		for(int i = 0; i < grid.length; i += 2)
 		{
 			grid[i][grid[0].length - 4] = new Tube();
 		}
+		
+		// add a marble
+		marbles.add(new Marble(0, 0));
 		
 		// set panel size
 		Dimension size = new Dimension(grid.length * 64, grid[0].length * 64);
