@@ -9,6 +9,7 @@ package tk.alexander01998.galton_brett.simulation;
 
 import java.awt.Graphics;
 
+import tk.alexander01998.galton_brett.GaltonBrett;
 import tk.alexander01998.galton_brett.gui.TextureManager;
 
 public class Marble
@@ -33,7 +34,19 @@ public class Marble
 	}
 	
 	public void update()
-	{	
-		
+	{
+		if(timer == 0)
+		{
+			Entity[][] grid = GaltonBrett.simulation.grid;
+			if(posY < grid[0].length - 1
+				&& !(grid[posX][posY + 1] instanceof Wedge))
+			{
+				oldPosX = posX;
+				oldPosY = posY;
+				posY++;
+			}
+			timer = 20;
+		}else
+			timer--;
 	}
 }

@@ -82,6 +82,7 @@ public class Simulation
 	
 	private void runTick()
 	{	
-		
+		for(Marble marble : marbles)
+			marble.update();
 	}
 }
