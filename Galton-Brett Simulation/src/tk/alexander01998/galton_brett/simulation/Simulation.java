@@ -27,6 +27,10 @@ public class Simulation
 				grid[n - y + x * 2][y * 2 + 1] = new Wedge();
 			}
 		}
+		for(int i = 0; i < grid.length; i += 2)
+		{
+			grid[i][grid[0].length - 4] = new Tube();
+		}
 		
 		// set panel size
 		Dimension size = new Dimension(grid.length * 64, grid[0].length * 64);
