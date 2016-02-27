@@ -30,8 +30,8 @@ public class SimulationPanel extends JPanel
 	public void paint(Graphics g)
 	{
 		super.paint(g);
-		for(int x = 0; x < getWidth(); x += 80)
-			for(int y = 0; y < getHeight(); y += 80)
+		for(int x = 0; x < getWidth(); x += 256)
+			for(int y = 0; y < getHeight(); y += 256)
 				g.drawImage(TextureManager.BACKGROUND, x, y, null);
 		Entity[][] grid = GaltonBrett.simulation.grid;
 		for(int x = 0; x < grid.length; x++)
