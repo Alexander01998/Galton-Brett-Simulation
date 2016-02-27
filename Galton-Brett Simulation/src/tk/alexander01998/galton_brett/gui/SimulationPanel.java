@@ -65,7 +65,8 @@ public class SimulationPanel extends JPanel
 		g.drawRect(0, 0, grid.length * 64, grid[0].length * 64);
 		
 		// continue simulation
-		thread.resume();
+		if(thread != null)
+			thread.resume();
 	}
 	
 	@SuppressWarnings("deprecation")
