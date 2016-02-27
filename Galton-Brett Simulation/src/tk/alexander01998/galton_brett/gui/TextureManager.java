@@ -19,7 +19,7 @@ public class TextureManager
 	public static final BufferedImage WEDGE = getTexture("keil");
 	public static final BufferedImage TUBE = getTexture("roehre");
 	
-	public static BufferedImage getTexture(String name)
+	private static BufferedImage getTexture(String name)
 	{
 		try
 		{
