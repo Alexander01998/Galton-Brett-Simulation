@@ -56,7 +56,8 @@ public class Simulation
 	public void run()
 	{
 		running = true;
-		long cycleStart, tickStart, frameStart, lastTick = 0, lastFrame = 0, sleepTime;
+		long cycleStart, cycleEnd, tickStart, frameStart, lastTick = 0, lastFrame =
+			0, sleepTime;
 		while(running)
 		{
 			cycleStart = System.currentTimeMillis();
@@ -85,9 +86,9 @@ public class Simulation
 			}
 			
 			// sleep
+			cycleEnd = System.currentTimeMillis();
 			sleepTime =
-				Math.min(lastFrame + 16 - System.currentTimeMillis(), lastTick
-					+ 50 - System.currentTimeMillis());
+				Math.min(lastFrame + 16 - cycleEnd, lastTick + 50 - cycleEnd);
 			if(sleepTime > 1)
 				try
 				{
@@ -104,7 +105,7 @@ public class Simulation
 		for(Marble marble : marbles)
 			marble.update();
 	}
-
+	
 	public float getP()
 	{
 		return p;
