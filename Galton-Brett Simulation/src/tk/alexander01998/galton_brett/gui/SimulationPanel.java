@@ -52,14 +52,12 @@ public class SimulationPanel extends JPanel
 		// wedges & tubes
 		Entity[][] grid = GaltonBrett.simulation.grid;
 		for(int x = 0; x < grid.length; x++)
-		{
 			for(int y = 0; y < grid[x].length; y++)
 			{
 				Entity entity = grid[x][y];
 				if(entity != null)
 					entity.render(g, x, y);
 			}
-		}
 		
 		// border
 		g.drawRect(0, 0, grid.length * 64, grid[0].length * 64);

@@ -26,8 +26,8 @@ public class Marble
 	{
 		this.posX = posX;
 		this.posY = posY;
-		this.oldPosX = posX;
-		this.oldPosY = posY;
+		oldPosX = posX;
+		oldPosY = posY;
 	}
 	
 	public void render(Graphics g, float partialTicks)

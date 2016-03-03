@@ -14,5 +14,5 @@ public class Wedge extends Entity
 	public Wedge()
 	{
 		super(TextureManager.WEDGE);
-	}	
+	}
 }

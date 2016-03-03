@@ -28,18 +28,12 @@ public class Simulation
 		// add wedges
 		grid = new Entity[n * 2 + 1][n * 2 + 4];
 		for(int y = 0; y < n; y++)
-		{
 			for(int x = 0; x < y + 1; x++)
-			{
 				grid[n - y + x * 2][y * 2 + 1] = new Wedge();
-			}
-		}
 		
 		// add tubes
 		for(int i = 0; i < grid.length; i += 2)
-		{
 			grid[i][grid[0].length - 4] = new Tube();
-		}
 		
 		// add a marble
 		marbles.add(new Marble(3, 0));
@@ -78,7 +72,7 @@ public class Simulation
 			{
 				frameStart = System.nanoTime();
 				
-				float partialTicks = (float)(cycleStart - lastTick) / 50F;
+				float partialTicks = (cycleStart - lastTick) / 50F;
 				GaltonBrett.frame.simulationPanel.render(partialTicks);
 				
 				lastFrame = cycleStart;

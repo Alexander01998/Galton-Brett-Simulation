@@ -11,7 +11,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 public abstract class Entity
-{	
+{
 	private final BufferedImage texture;
 	
 	public Entity(BufferedImage texture)

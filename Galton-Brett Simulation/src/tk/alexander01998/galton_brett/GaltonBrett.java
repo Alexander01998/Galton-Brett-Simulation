@@ -16,7 +16,7 @@ import tk.alexander01998.galton_brett.simulation.Simulation;
 import tk.alexander01998.galton_brett.sounds.SoundManager;
 
 public class GaltonBrett
-{	
+{
 	public static MainFrame frame;
 	public static Simulation simulation;
 	

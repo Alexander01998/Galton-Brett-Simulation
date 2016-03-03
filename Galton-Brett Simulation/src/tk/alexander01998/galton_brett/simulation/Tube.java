@@ -14,5 +14,5 @@ public class Tube extends Entity
 	public Tube()
 	{
 		super(TextureManager.TUBE);
-	}	
+	}
 }
