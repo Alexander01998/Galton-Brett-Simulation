@@ -18,7 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 public class MainFrame extends JFrame
 {
-	public SimulationPanel simulationPanel;
+	public SimulationCanvas simulationCanvas;
 	
 	/**
 	 * Create the frame.
@@ -45,7 +45,7 @@ public class MainFrame extends JFrame
 		JScrollPane scrollPane = new JScrollPane();
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 		
-		simulationPanel = new SimulationPanel();
-		scrollPane.setViewportView(simulationPanel);
+		simulationCanvas = new SimulationCanvas();
+		scrollPane.setViewportView(simulationCanvas);
 	}
 }

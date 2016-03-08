@@ -11,7 +11,7 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 
 import tk.alexander01998.galton_brett.GaltonBrett;
-import tk.alexander01998.galton_brett.gui.SimulationPanel;
+import tk.alexander01998.galton_brett.gui.SimulationCanvas;
 
 public class Simulation
 {
@@ -40,11 +40,11 @@ public class Simulation
 		
 		// set panel size
 		Dimension size = new Dimension(grid.length * 64, grid[0].length * 64);
-		SimulationPanel simulationPanel = GaltonBrett.frame.simulationPanel;
-		simulationPanel.setSize(size);
-		simulationPanel.setMinimumSize(size);
-		simulationPanel.setPreferredSize(size);
-		simulationPanel.setMaximumSize(size);
+		SimulationCanvas simulationCanvas = GaltonBrett.frame.simulationCanvas;
+		simulationCanvas.setSize(size);
+		simulationCanvas.setMinimumSize(size);
+		simulationCanvas.setPreferredSize(size);
+		simulationCanvas.setMaximumSize(size);
 	}
 	
 	public void run()
@@ -73,7 +73,7 @@ public class Simulation
 				frameStart = System.nanoTime();
 				
 				float partialTicks = (cycleStart - lastTick) / 50F;
-				GaltonBrett.frame.simulationPanel.render(partialTicks);
+				GaltonBrett.frame.simulationCanvas.render(partialTicks);
 				
 				lastFrame = cycleStart;
 				frameTime = (System.nanoTime() - frameStart) * 1e-6;

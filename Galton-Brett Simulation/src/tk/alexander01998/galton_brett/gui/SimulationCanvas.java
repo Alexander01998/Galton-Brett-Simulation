@@ -15,13 +15,13 @@ import tk.alexander01998.galton_brett.GaltonBrett;
 import tk.alexander01998.galton_brett.simulation.Entity;
 import tk.alexander01998.galton_brett.simulation.Marble;
 
-public class SimulationPanel extends Canvas
+public class SimulationCanvas extends Canvas
 {
 	
 	/**
 	 * Create the panel.
 	 */
-	public SimulationPanel()
+	public SimulationCanvas()
 	{	
 		
 	}
