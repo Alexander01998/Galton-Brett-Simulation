@@ -17,15 +17,6 @@ import tk.alexander01998.galton_brett.simulation.Marble;
 
 public class SimulationCanvas extends Canvas
 {
-	
-	/**
-	 * Create the panel.
-	 */
-	public SimulationCanvas()
-	{	
-		
-	}
-	
 	public void render(float partialTicks)
 	{
 		BufferStrategy bs = getBufferStrategy();
