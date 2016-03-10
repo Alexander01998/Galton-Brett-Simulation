@@ -22,7 +22,7 @@ Die Aufgabenstellung lautet wie folgt:
 
 Wenn die Zeit es zulässt, möchte ich außerdem folgende Features in das Programm einbauen:
 
-- Die Simulation soll übersprungen werden können, falls sie bei vielen Kugeln oder Reihen zu lange dauert.
+- Die Wahrscheinlichkeit `p` soll ebenfalls einstellbar sein.
 
 - Die Simulationsgeschwindigkeit soll einstellbar sein.
 
