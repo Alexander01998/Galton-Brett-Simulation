@@ -22,6 +22,8 @@ Die Aufgabenstellung lautet wie folgt:
 
 Wenn die Zeit es zulässt, möchte ich außerdem folgende Features in das Programm einbauen:
 
+- Das Programm soll Sounds haben, die man in den Einstellungen an- und ausschalten kann.
+
 - Die Wahrscheinlichkeit `p` soll ebenfalls einstellbar sein.
 
 - Die Simulationsgeschwindigkeit soll einstellbar sein.
