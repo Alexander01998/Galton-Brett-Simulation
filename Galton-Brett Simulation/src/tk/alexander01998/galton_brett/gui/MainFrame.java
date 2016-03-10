@@ -9,8 +9,10 @@ package tk.alexander01998.galton_brett.gui;
 
 import java.awt.BorderLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
 public class MainFrame extends JFrame
@@ -30,7 +32,25 @@ public class MainFrame extends JFrame
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		contentPane.add(tabbedPane, BorderLayout.CENTER);
+		
+		JPanel panel = new JPanel();
+		tabbedPane
+			.addTab(
+				"Einstellungen\r\n",
+				new ImageIcon(
+					MainFrame.class
+						.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-information.png")),
+				panel, null);
+		
 		simulationCanvas = new SimulationCanvas();
-		contentPane.add(simulationCanvas, BorderLayout.CENTER);
+		tabbedPane
+			.addTab(
+				"Simulation",
+				new ImageIcon(
+					MainFrame.class
+						.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-error.png")),
+				simulationCanvas, null);
 	}
 }
