@@ -13,7 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 public class MainFrame extends JFrame
@@ -42,10 +41,7 @@ public class MainFrame extends JFrame
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		contentPane.add(scrollPane, BorderLayout.CENTER);
-		
 		simulationCanvas = new SimulationCanvas();
-		scrollPane.setViewportView(simulationCanvas);
+		contentPane.add(simulationCanvas, BorderLayout.CENTER);
 	}
 }
