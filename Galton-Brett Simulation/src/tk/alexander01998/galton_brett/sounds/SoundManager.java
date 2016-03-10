@@ -7,9 +7,7 @@
  */
 package tk.alexander01998.galton_brett.sounds;
 
-import javafx.embed.swing.JFXPanel;
 import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
 @SuppressWarnings("restriction")
 public class SoundManager
@@ -21,18 +19,19 @@ public class SoundManager
 	public static void initialize()
 	{
 		// initialize JavaFX
-		new JFXPanel();
+		// new JFXPanel();
 	}
 	
 	public static void play(Media sound)
 	{
-		MediaPlayer player = new MediaPlayer(sound);
-		player.play();
+		// MediaPlayer player = new MediaPlayer(sound);
+		// player.play();
 	}
 	
 	private static Media getSound(String name)
 	{
-		return new Media(SoundManager.class.getClassLoader()
-			.getResource("sounds/" + name + ".mp3").toString());
+		return null;
+		// return new Media(SoundManager.class.getClassLoader()
+		// .getResource("sounds/" + name + ".mp3").toString());
 	}
 }
