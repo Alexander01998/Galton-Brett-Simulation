@@ -35,14 +35,14 @@ public class MainFrame extends JFrame
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
-		JPanel panel = new JPanel();
+		SettingsPanel settingsPanel = new SettingsPanel();
 		tabbedPane
 			.addTab(
 				"Einstellungen\r\n",
 				new ImageIcon(
 					MainFrame.class
 						.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-information.png")),
-				panel, null);
+				settingsPanel, null);
 		
 		simulationCanvas = new SimulationCanvas();
 		tabbedPane
