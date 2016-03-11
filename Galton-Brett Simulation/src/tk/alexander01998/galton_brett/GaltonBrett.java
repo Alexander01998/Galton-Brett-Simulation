@@ -35,7 +35,7 @@ public class GaltonBrett
 			frame = new MainFrame();
 			frame.setVisible(true);
 			SoundManager.initialize();
-			simulation = new Simulation(3, 0.5F);
+			simulation = new Simulation(3, 3, 0.5F);
 			simulation.run();
 		}catch(Exception e)
 		{

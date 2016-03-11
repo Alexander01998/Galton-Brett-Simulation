@@ -21,7 +21,7 @@ public class Simulation
 	public double tickTime, frameTime;
 	private float p;
 	
-	public Simulation(int n, float p)
+	public Simulation(int n, int m, float p)
 	{
 		this.p = p;
 		
@@ -36,7 +36,8 @@ public class Simulation
 			grid[i][grid[0].length - 4] = new Tube();
 		
 		// add a marble
-		marbles.add(new Marble(3, 0));
+		for(int i = 0; i < m; i++)
+			marbles.add(new Marble(3, -1));
 		
 		// set panel size
 		Dimension size = new Dimension(grid.length * 64, grid[0].length * 64);
