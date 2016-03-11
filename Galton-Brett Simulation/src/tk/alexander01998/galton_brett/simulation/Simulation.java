@@ -8,10 +8,13 @@
 package tk.alexander01998.galton_brett.simulation;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
 import tk.alexander01998.galton_brett.GaltonBrett;
 import tk.alexander01998.galton_brett.gui.SimulationCanvas;
+import tk.alexander01998.galton_brett.gui.TextureManager;
 
 public class Simulation
 {
@@ -62,7 +65,7 @@ public class Simulation
 			{
 				tickStart = System.nanoTime();
 				
-				runTick();
+				tick();
 				
 				lastTick = cycleStart;
 				tickTime = (System.nanoTime() - tickStart) * 1e-6;
@@ -73,8 +76,7 @@ public class Simulation
 			{
 				frameStart = System.nanoTime();
 				
-				float partialTicks = (cycleStart - lastTick) / 50F;
-				GaltonBrett.frame.simulationCanvas.render(partialTicks);
+				render((cycleStart - lastTick) / 50F);
 				
 				lastFrame = cycleStart;
 				frameTime = (System.nanoTime() - frameStart) * 1e-6;
@@ -95,10 +97,46 @@ public class Simulation
 		}
 	}
 	
-	private void runTick()
+	private void tick()
 	{
 		for(Marble marble : marbles)
 			marble.update();
+	}
+	
+	public void render(float partialTicks)
+	{
+		SimulationCanvas simulationCanvas = GaltonBrett.frame.simulationCanvas;
+		BufferStrategy bs = simulationCanvas.getBufferStrategy();
+		if(bs == null)
+		{
+			simulationCanvas.createBufferStrategy(3);
+			return;
+		}
+		Graphics g = bs.getDrawGraphics();
+		
+		// background
+		for(int x = 0; x < simulationCanvas.getWidth(); x += 256)
+			for(int y = 0; y < simulationCanvas.getHeight(); y += 256)
+				g.drawImage(TextureManager.BACKGROUND, x, y, null);
+		
+		// marbles
+		for(Marble marble : marbles)
+			marble.render(g, partialTicks);
+		
+		// wedges & tubes
+		for(int x = 0; x < grid.length; x++)
+			for(int y = 0; y < grid[x].length; y++)
+			{
+				Entity entity = grid[x][y];
+				if(entity != null)
+					entity.render(g, x, y);
+			}
+		
+		// border
+		g.drawRect(0, 0, grid.length * 64, grid[0].length * 64);
+		
+		g.dispose();
+		bs.show();
 	}
 	
 	public float getP()
