@@ -7,8 +7,6 @@
  */
 package tk.alexander01998.galton_brett;
 
-import java.awt.EventQueue;
-
 import javax.swing.UIManager;
 
 import tk.alexander01998.galton_brett.gui.MainFrame;
@@ -32,23 +30,10 @@ public class GaltonBrett
 		{
 			e1.printStackTrace();
 		}
-		EventQueue.invokeLater(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				try
-				{
-					frame = new MainFrame();
-					frame.setVisible(true);
-				}catch(Exception e)
-				{
-					e.printStackTrace();
-				}
-			}
-		});
 		try
 		{
+			frame = new MainFrame();
+			frame.setVisible(true);
 			SoundManager.initialize();
 			simulation = new Simulation(3, 0.5F);
 			simulation.run();
