@@ -103,7 +103,7 @@ public class Simulation
 			marble.update();
 	}
 	
-	public void render(float partialTicks)
+	private void render(float partialTicks)
 	{
 		SimulationCanvas simulationCanvas = GaltonBrett.frame.simulationCanvas;
 		BufferStrategy bs = simulationCanvas.getBufferStrategy();
