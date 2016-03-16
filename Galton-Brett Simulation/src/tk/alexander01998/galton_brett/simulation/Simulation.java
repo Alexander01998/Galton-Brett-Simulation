@@ -22,7 +22,9 @@ public class Simulation
 	public Entity[][] grid;
 	public ArrayList<Marble> marbles = new ArrayList<>();
 	public double tickTime, frameTime;
-	private float p;
+	private int n = 3;
+	private int m = 3;
+	private float p = 0.5F;
 	private Thread thread = new Thread();
 	
 	public void start()
@@ -30,7 +32,7 @@ public class Simulation
 		if(thread.isAlive())
 			throw new IllegalStateException("Simulation is already running.");
 		
-		build(3, 3, 0.5F);
+		build();
 		running = true;
 		thread = new Thread(() -> run(), "Simulation");
 		thread.start();
@@ -49,10 +51,8 @@ public class Simulation
 			}
 	}
 	
-	private void build(int n, int m, float p)
+	private void build()
 	{
-		this.p = p;
-		
 		// add wedges
 		grid = new Entity[n * 2 + 1][n * 2 + 4];
 		for(int y = 0; y < n; y++)
@@ -125,7 +125,7 @@ public class Simulation
 	private void tick()
 	{
 		for(Marble marble : marbles)
-			marble.update(p);
+			marble.update();
 	}
 	
 	private void render(float partialTicks)
@@ -162,5 +162,35 @@ public class Simulation
 		
 		g.dispose();
 		bs.show();
+	}
+
+	public int getN()
+	{
+		return n;
+	}
+
+	public void setN(int n)
+	{
+		this.n = n;
+	}
+
+	public int getM()
+	{
+		return m;
+	}
+
+	public void setM(int m)
+	{
+		this.m = m;
+	}
+
+	public float getP()
+	{
+		return p;
+	}
+
+	public void setP(float p)
+	{
+		this.p = p;
 	}
 }
