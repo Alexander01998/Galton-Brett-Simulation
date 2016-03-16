@@ -12,6 +12,10 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
+
+import tk.alexander01998.galton_brett.GaltonBrett;
 
 public class SettingsPanel extends JPanel
 {
@@ -24,31 +28,54 @@ public class SettingsPanel extends JPanel
 		setLayout(springLayout);
 		
 		JLabel lblReihenMitKeilen = new JLabel("Reihen mit Keilen (n)");
-		springLayout.putConstraint(SpringLayout.NORTH, lblReihenMitKeilen, 13, SpringLayout.NORTH, this);
-		springLayout.putConstraint(SpringLayout.WEST, lblReihenMitKeilen, 10, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.EAST, lblReihenMitKeilen, 159, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, lblReihenMitKeilen, 13,
+			SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, lblReihenMitKeilen, 10,
+			SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, lblReihenMitKeilen, 159,
+			SpringLayout.WEST, this);
 		add(lblReihenMitKeilen);
 		
 		JLabel lblAnzahlDerKugeln = new JLabel("Anzahl der Kugeln");
-		springLayout.putConstraint(SpringLayout.NORTH, lblAnzahlDerKugeln, 10, SpringLayout.SOUTH, lblReihenMitKeilen);
-		springLayout.putConstraint(SpringLayout.WEST, lblAnzahlDerKugeln, 10, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.EAST, lblAnzahlDerKugeln, 139, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, lblAnzahlDerKugeln, 10,
+			SpringLayout.SOUTH, lblReihenMitKeilen);
+		springLayout.putConstraint(SpringLayout.WEST, lblAnzahlDerKugeln, 10,
+			SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, lblAnzahlDerKugeln, 139,
+			SpringLayout.WEST, this);
 		add(lblAnzahlDerKugeln);
 		
 		JSpinner spinnerKeile = new JSpinner();
-		springLayout.putConstraint(SpringLayout.NORTH, spinnerKeile, -3, SpringLayout.NORTH, lblReihenMitKeilen);
-		springLayout.putConstraint(SpringLayout.WEST, spinnerKeile, 165, SpringLayout.WEST, this);
+		spinnerKeile.addChangeListener(new ChangeListener()
+		{
+			@Override
+			public void stateChanged(ChangeEvent e)
+			{
+				GaltonBrett.simulation.setN((int)spinnerKeile.getValue());
+			}
+		});
+		springLayout.putConstraint(SpringLayout.NORTH, spinnerKeile, -3,
+			SpringLayout.NORTH, lblReihenMitKeilen);
+		springLayout.putConstraint(SpringLayout.WEST, spinnerKeile, 165,
+			SpringLayout.WEST, this);
 		lblReihenMitKeilen.setLabelFor(spinnerKeile);
-		spinnerKeile.setModel(new SpinnerNumberModel(new Integer(3), new Integer(1), null, new Integer(1)));
+		spinnerKeile.setModel(new SpinnerNumberModel(new Integer(
+			GaltonBrett.simulation.getN()), new Integer(1), null,
+			new Integer(1)));
 		add(spinnerKeile);
 		
 		JSpinner spinnerKugeln = new JSpinner();
-		springLayout.putConstraint(SpringLayout.NORTH, spinnerKugeln, 4, SpringLayout.SOUTH, spinnerKeile);
-		springLayout.putConstraint(SpringLayout.EAST, spinnerKeile, 0, SpringLayout.EAST, spinnerKugeln);
-		springLayout.putConstraint(SpringLayout.WEST, spinnerKugeln, 165, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.EAST, spinnerKugeln, -10, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, spinnerKugeln, 4,
+			SpringLayout.SOUTH, spinnerKeile);
+		springLayout.putConstraint(SpringLayout.EAST, spinnerKeile, 0,
+			SpringLayout.EAST, spinnerKugeln);
+		springLayout.putConstraint(SpringLayout.WEST, spinnerKugeln, 165,
+			SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, spinnerKugeln, -10,
+			SpringLayout.EAST, this);
 		lblAnzahlDerKugeln.setLabelFor(spinnerKugeln);
-		spinnerKugeln.setModel(new SpinnerNumberModel(new Integer(3), new Integer(1), null, new Integer(1)));
+		spinnerKugeln.setModel(new SpinnerNumberModel(new Integer(3),
+			new Integer(1), null, new Integer(1)));
 		add(spinnerKugeln);
 		
 	}
