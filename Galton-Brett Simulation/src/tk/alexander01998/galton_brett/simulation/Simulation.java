@@ -23,8 +23,33 @@ public class Simulation
 	public ArrayList<Marble> marbles = new ArrayList<>();
 	public double tickTime, frameTime;
 	private float p;
+	private Thread thread = new Thread();
 	
-	public Simulation(int n, int m, float p)
+	public void start()
+	{
+		if(thread.isAlive())
+			throw new IllegalStateException("Simulation is already running.");
+		
+		build(3, 3, 0.5F);
+		running = true;
+		thread = new Thread(() -> run(), "Simulation");
+		thread.start();
+	}
+	
+	public void stop()
+	{
+		running = false;
+		if(thread.isAlive())
+			try
+			{
+				thread.join();
+			}catch(InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+	}
+	
+	public void build(int n, int m, float p)
 	{
 		this.p = p;
 		
@@ -38,7 +63,8 @@ public class Simulation
 		for(int i = 0; i < grid.length; i += 2)
 			grid[i][grid[0].length - 4] = new Tube();
 		
-		// add a marble
+		// add marbles
+		marbles.clear();
 		for(int i = 0; i < m; i++)
 			marbles.add(new Marble(3, -1));
 		
@@ -53,7 +79,6 @@ public class Simulation
 	
 	public void run()
 	{
-		running = true;
 		long cycleStart, cycleEnd, tickStart, frameStart, lastTick = 0, lastFrame =
 			0, sleepTime;
 		while(running)
@@ -142,10 +167,5 @@ public class Simulation
 	public float getP()
 	{
 		return p;
-	}
-	
-	public void stop()
-	{
-		running = false;
 	}
 }

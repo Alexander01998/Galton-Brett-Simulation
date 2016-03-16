@@ -42,10 +42,15 @@ public class MainFrame extends JFrame
 			@Override
 			public void stateChanged(ChangeEvent e)
 			{
-				if(tabbedPane.getSelectedIndex() != 1)
-					return;
-				// restart simulation
-				GaltonBrett.restartSimulation();
+				switch(tabbedPane.getSelectedIndex())
+				{
+					case 0:
+						GaltonBrett.simulation.stop();
+						break;
+					case 1:
+						GaltonBrett.simulation.start();
+						break;
+				}
 			}
 		});
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
