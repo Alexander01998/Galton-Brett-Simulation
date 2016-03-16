@@ -125,7 +125,7 @@ public class Simulation
 	private void tick()
 	{
 		for(Marble marble : marbles)
-			marble.update();
+			marble.update(p);
 	}
 	
 	private void render(float partialTicks)
@@ -162,10 +162,5 @@ public class Simulation
 		
 		g.dispose();
 		bs.show();
-	}
-	
-	public float getP()
-	{
-		return p;
 	}
 }

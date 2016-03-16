@@ -62,7 +62,7 @@ public class Marble
 		g.drawImage(TextureManager.MARBLE, renderX, renderY, null);
 	}
 	
-	public void update()
+	public void update(float p)
 	{
 		if(timer > 0)
 			timer--;
@@ -84,7 +84,7 @@ public class Marble
 			
 			if(grid[posX][posY + 1] instanceof Wedge)
 			{
-				if(Math.random() < GaltonBrett.simulation.getP())
+				if(Math.random() < p)
 					posX++;
 				else
 					posX--;
