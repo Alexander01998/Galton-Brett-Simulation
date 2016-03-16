@@ -65,6 +65,14 @@ public class SettingsPanel extends JPanel
 		add(spinnerKeile);
 		
 		JSpinner spinnerKugeln = new JSpinner();
+		spinnerKugeln.addChangeListener(new ChangeListener()
+		{
+			@Override
+			public void stateChanged(ChangeEvent e)
+			{
+				GaltonBrett.simulation.setM((int)spinnerKugeln.getValue());
+			}
+		});
 		springLayout.putConstraint(SpringLayout.NORTH, spinnerKugeln, 4,
 			SpringLayout.SOUTH, spinnerKeile);
 		springLayout.putConstraint(SpringLayout.EAST, spinnerKeile, 0,
@@ -74,8 +82,9 @@ public class SettingsPanel extends JPanel
 		springLayout.putConstraint(SpringLayout.EAST, spinnerKugeln, -10,
 			SpringLayout.EAST, this);
 		lblAnzahlDerKugeln.setLabelFor(spinnerKugeln);
-		spinnerKugeln.setModel(new SpinnerNumberModel(new Integer(3),
-			new Integer(1), null, new Integer(1)));
+		spinnerKugeln.setModel(new SpinnerNumberModel(new Integer(
+			GaltonBrett.simulation.getM()), new Integer(1), null,
+			new Integer(1)));
 		add(spinnerKugeln);
 		
 	}
