@@ -49,7 +49,7 @@ public class Simulation
 			}
 	}
 	
-	public void build(int n, int m, float p)
+	private void build(int n, int m, float p)
 	{
 		this.p = p;
 		
@@ -77,7 +77,7 @@ public class Simulation
 		simulationCanvas.setMaximumSize(size);
 	}
 	
-	public void run()
+	private void run()
 	{
 		long cycleStart, cycleEnd, tickStart, frameStart, lastTick = 0, lastFrame =
 			0, sleepTime;
