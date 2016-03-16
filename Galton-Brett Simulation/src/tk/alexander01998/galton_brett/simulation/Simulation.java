@@ -66,7 +66,7 @@ public class Simulation
 		// add marbles
 		marbles.clear();
 		for(int i = 0; i < m; i++)
-			marbles.add(new Marble(3, -1));
+			marbles.add(new Marble(n, -1));
 		
 		// set panel size
 		Dimension size = new Dimension(grid.length * 64, grid[0].length * 64);
