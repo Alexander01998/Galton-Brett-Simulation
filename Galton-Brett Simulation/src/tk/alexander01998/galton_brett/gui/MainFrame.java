@@ -14,6 +14,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import tk.alexander01998.galton_brett.GaltonBrett;
 
 public class MainFrame extends JFrame
 {
@@ -33,6 +37,17 @@ public class MainFrame extends JFrame
 		setContentPane(contentPane);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.addChangeListener(new ChangeListener()
+		{
+			@Override
+			public void stateChanged(ChangeEvent e)
+			{
+				if(tabbedPane.getSelectedIndex() != 1)
+					return;
+				// restart simulation
+				GaltonBrett.restartSimulation();
+			}
+		});
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
 		SettingsPanel settingsPanel = new SettingsPanel();

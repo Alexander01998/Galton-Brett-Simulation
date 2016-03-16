@@ -17,6 +17,7 @@ public class GaltonBrett
 {
 	public static MainFrame frame;
 	public static Simulation simulation;
+	private static Thread simulationThread;
 	
 	/**
 	 * Launch the application.
@@ -36,10 +37,26 @@ public class GaltonBrett
 			frame.setVisible(true);
 			SoundManager.initialize();
 			simulation = new Simulation(3, 3, 0.5F);
-			simulation.run();
+			simulationThread = new Thread(() -> simulation.run());
+			simulationThread.start();
 		}catch(Exception e)
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	public static void restartSimulation()
+	{
+		simulation.stop();
+		try
+		{
+			simulationThread.join();
+		}catch(InterruptedException e)
+		{
+			e.printStackTrace();
+		}
+		simulation = new Simulation(3, 3, 0.5F);
+		simulationThread = new Thread(() -> simulation.run());
+		simulationThread.start();
 	}
 }

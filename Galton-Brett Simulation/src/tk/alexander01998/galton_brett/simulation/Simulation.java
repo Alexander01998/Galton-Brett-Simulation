@@ -143,4 +143,9 @@ public class Simulation
 	{
 		return p;
 	}
+	
+	public void stop()
+	{
+		running = false;
+	}
 }
