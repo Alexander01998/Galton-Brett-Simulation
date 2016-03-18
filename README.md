@@ -6,31 +6,33 @@ Dieses Programm simuliert graphisch das [Galtonsche Brett](https://de.wikipedia.
 ## Features
 Die Aufgabenstellung lautet wie folgt:
 
-- Das Programm muss spätestens am 11. April 2016 fertig sein.
+- [ ] Das Programm muss spätestens am 11. April 2016 fertig sein.
 
-- Das Programm muss das Galtonbrett graphisch darstellen.
+- [X] Das Programm muss das Galtonbrett graphisch darstellen.
 
-- Das Programm muss nutzerfreundlich sein.
+- [ ] Das Programm muss nutzerfreundlich sein.
 
-- Man muss die Anzahl der Kugeln einstellen können.
+- [X] Man muss die Anzahl der Kugeln einstellen können.
 
-- Die Simulation soll per Knopfdruck gestartet werden können.
+- [X] Die Simulation soll per Knopfdruck gestartet werden können.
 
-- Das Programm muss einen Erklärungstext beinhalten, in dem erklärt wird, was das Galtonische Brett ist, was `n` ist, usw.
+- [ ] Das Programm muss einen Erklärungstext beinhalten, in dem erklärt wird, was das Galtonische Brett ist, was `n` ist, usw.
 
-- Die Anzahl der Reihen `n` soll ebenfalls einstellbar sein.
+- [X] Die Anzahl der Reihen `n` soll ebenfalls einstellbar sein.
 
 Wenn die Zeit es zulässt, möchte ich außerdem folgende Features in das Programm einbauen:
 
-- Das Programm soll Sounds haben, die man in den Einstellungen an- und ausschalten kann.
+- [ ] Das Programm soll Sounds haben, die man in den Einstellungen an- und ausschalten kann.
 
-- Die Wahrscheinlichkeit `p` soll ebenfalls einstellbar sein.
+- [ ] Das Programm soll eine (evtl. automatische) Zoom-Funktion haben, damit auch größere Simulationen auf den Bildschirm passen.
 
-- Die Simulationsgeschwindigkeit soll einstellbar sein.
+- [ ] Die Wahrscheinlichkeit `p` soll ebenfalls einstellbar sein.
 
-- Das Programm soll eine Website haben.
+- [ ] Die Simulationsgeschwindigkeit soll einstellbar sein.
 
-- Das Programm soll bei einem Fehler eine Fehlermeldung anzeigen.
+- [ ] Das Programm soll eine Website haben.
+
+- [ ] Das Programm soll bei einem Fehler eine Fehlermeldung anzeigen.
 
 ## Issues und Pull Requests
 Da ich das Programm alleine erstellen muss, kann ich bei diesem Projekt keine Pull Requests annehmen. Es sollte allerdings kein Problem sein, wenn ich über den Issue Tracker Fragen beantworte.
