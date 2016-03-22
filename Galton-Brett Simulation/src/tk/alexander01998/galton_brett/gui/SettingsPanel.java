@@ -16,6 +16,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 
 import tk.alexander01998.galton_brett.GaltonBrett;
+import java.awt.Font;
 
 public class SettingsPanel extends JPanel
 {
@@ -32,8 +33,6 @@ public class SettingsPanel extends JPanel
 			SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, lblN, 10,
 			SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.EAST, lblN, 159,
-			SpringLayout.WEST, this);
 		add(lblN);
 		
 		JLabel lblM = new JLabel("Anzahl der Kugeln");
@@ -41,11 +40,20 @@ public class SettingsPanel extends JPanel
 			SpringLayout.SOUTH, lblN);
 		springLayout.putConstraint(SpringLayout.WEST, lblM, 10,
 			SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.EAST, lblM, 139,
-			SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, lblM, -311,
+			SpringLayout.EAST, this);
 		add(lblM);
 		
 		JSpinner spinnerN = new JSpinner();
+		springLayout.putConstraint(SpringLayout.WEST, spinnerN, 175,
+			SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, spinnerN, -10,
+			SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.EAST, lblN, -16,
+			SpringLayout.WEST, spinnerN);
+		spinnerN.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		springLayout.putConstraint(SpringLayout.NORTH, spinnerN, 10,
+			SpringLayout.NORTH, this);
 		spinnerN.addChangeListener(new ChangeListener()
 		{
 			@Override
@@ -54,10 +62,6 @@ public class SettingsPanel extends JPanel
 				GaltonBrett.simulation.setN((int)spinnerN.getValue());
 			}
 		});
-		springLayout.putConstraint(SpringLayout.NORTH, spinnerN, -3,
-			SpringLayout.NORTH, lblN);
-		springLayout.putConstraint(SpringLayout.WEST, spinnerN, 165,
-			SpringLayout.WEST, this);
 		lblN.setLabelFor(spinnerN);
 		spinnerN.setModel(new SpinnerNumberModel(new Integer(
 			GaltonBrett.simulation.getN()), new Integer(1), null,
@@ -65,6 +69,12 @@ public class SettingsPanel extends JPanel
 		add(spinnerN);
 		
 		JSpinner spinnerM = new JSpinner();
+		springLayout.putConstraint(SpringLayout.NORTH, spinnerM, -3,
+			SpringLayout.NORTH, lblM);
+		springLayout.putConstraint(SpringLayout.WEST, spinnerM, 0,
+			SpringLayout.WEST, spinnerN);
+		springLayout.putConstraint(SpringLayout.EAST, spinnerM, -10,
+			SpringLayout.EAST, this);
 		spinnerM.addChangeListener(new ChangeListener()
 		{
 			@Override
@@ -73,19 +83,37 @@ public class SettingsPanel extends JPanel
 				GaltonBrett.simulation.setM((int)spinnerM.getValue());
 			}
 		});
-		springLayout.putConstraint(SpringLayout.NORTH, spinnerM, 4,
-			SpringLayout.SOUTH, spinnerN);
-		springLayout.putConstraint(SpringLayout.EAST, spinnerN, 0,
-			SpringLayout.EAST, spinnerM);
-		springLayout.putConstraint(SpringLayout.WEST, spinnerM, 165,
-			SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.EAST, spinnerM, -10,
-			SpringLayout.EAST, this);
 		lblM.setLabelFor(spinnerM);
 		spinnerM.setModel(new SpinnerNumberModel(new Integer(
 			GaltonBrett.simulation.getM()), new Integer(1), null,
 			new Integer(1)));
 		add(spinnerM);
+		
+		JSpinner spinnerP = new JSpinner();
+		springLayout.putConstraint(SpringLayout.NORTH, spinnerP, 36,
+			SpringLayout.SOUTH, spinnerN);
+		springLayout.putConstraint(SpringLayout.EAST, spinnerP, -10,
+			SpringLayout.EAST, this);
+		spinnerP.addChangeListener(new ChangeListener()
+		{
+			@Override
+			public void stateChanged(ChangeEvent e)
+			{
+				GaltonBrett.simulation.setP((float)spinnerP.getValue());
+			}
+		});
+		spinnerP.setModel(new SpinnerNumberModel(new Float(0.5F),
+			new Float(0F), new Float(1F), new Float(0.05F)));
+		add(spinnerP);
+		
+		JLabel lblWahrscheinlichkeitp = new JLabel("Wahrscheinlichkeit (p)");
+		springLayout.putConstraint(SpringLayout.NORTH, lblWahrscheinlichkeitp,
+			12, SpringLayout.SOUTH, lblM);
+		springLayout.putConstraint(SpringLayout.WEST, spinnerP, 8,
+			SpringLayout.EAST, lblWahrscheinlichkeitp);
+		springLayout.putConstraint(SpringLayout.WEST, lblWahrscheinlichkeitp,
+			0, SpringLayout.WEST, lblN);
+		add(lblWahrscheinlichkeitp);
 		
 	}
 }
