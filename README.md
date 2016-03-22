@@ -26,7 +26,7 @@ Wenn die Zeit es zulässt, möchte ich außerdem folgende Features in das Programm 
 
 - [ ] Das Programm soll eine (evtl. automatische) Zoom-Funktion haben, damit auch größere Simulationen auf den Bildschirm passen.
 
-- [ ] Die Wahrscheinlichkeit `p` soll ebenfalls einstellbar sein.
+- [X] Die Wahrscheinlichkeit `p` soll ebenfalls einstellbar sein.
 
 - [ ] Die Simulationsgeschwindigkeit soll einstellbar sein.
 
