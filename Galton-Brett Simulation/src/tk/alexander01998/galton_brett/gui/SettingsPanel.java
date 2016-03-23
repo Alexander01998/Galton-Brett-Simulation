@@ -7,10 +7,10 @@
  */
 package tk.alexander01998.galton_brett.gui;
 
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.SystemColor;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,14 +28,19 @@ public class SettingsPanel extends JPanel
 	 */
 	public SettingsPanel()
 	{
+		setForeground(SystemColor.textHighlight);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{156, 0, 0};
 		gridBagLayout.rowHeights = new int[]{26, 0, 26, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights =
+			new double[]{1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights =
+			new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JLabel lblM = new JLabel("Anzahl der Kugeln");
+		JLabel lblM =
+			new JLabel(
+				"<html>Anzahl der Kugeln <code><font size=5>m</font></code>");
 		GridBagConstraints gbc_lblM = new GridBagConstraints();
 		gbc_lblM.fill = GridBagConstraints.HORIZONTAL;
 		gbc_lblM.insets = new Insets(0, 0, 5, 5);
@@ -75,7 +80,6 @@ public class SettingsPanel extends JPanel
 		});
 		
 		JSpinner spinnerN = new JSpinner();
-		spinnerN.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		spinnerN.addChangeListener(new ChangeListener()
 		{
 			@Override
@@ -85,7 +89,9 @@ public class SettingsPanel extends JPanel
 			}
 		});
 		
-		JLabel lblN = new JLabel("Reihen mit Keilen (n)");
+		JLabel lblN =
+			new JLabel(
+				"<html>Reihen mit Keilen <code><font size=5>n</font></code>");
 		lblN.setLabelFor(spinnerN);
 		GridBagConstraints gbc_lblN = new GridBagConstraints();
 		gbc_lblN.fill = GridBagConstraints.HORIZONTAL;
@@ -104,7 +110,9 @@ public class SettingsPanel extends JPanel
 		gbc_spinnerN.gridy = 1;
 		add(spinnerN, gbc_spinnerN);
 		
-		JLabel lblP = new JLabel("Wahrscheinlichkeit (p)");
+		JLabel lblP =
+			new JLabel(
+				"<html>Wahrscheinlichkeit <code><font size=5>p</font></code>");
 		lblP.setLabelFor(spinnerP);
 		GridBagConstraints gbc_lblP = new GridBagConstraints();
 		gbc_lblP.fill = GridBagConstraints.HORIZONTAL;
@@ -120,6 +128,5 @@ public class SettingsPanel extends JPanel
 		gbc_spinnerP.gridx = 1;
 		gbc_spinnerP.gridy = 2;
 		add(spinnerP, gbc_spinnerP);
-		
 	}
 }
