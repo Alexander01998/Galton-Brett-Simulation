@@ -16,7 +16,7 @@ Die Aufgabenstellung lautet wie folgt:
 
 - [X] Die Simulation soll per Knopfdruck gestartet werden können.
 
-- [ ] Das Programm muss einen Erklärungstext beinhalten, in dem erklärt wird, was das Galtonische Brett ist, was `n` ist, usw.
+- [X] Das Programm muss einen Erklärungstext beinhalten, in dem erklärt wird, was das Galtonische Brett ist, was `n` ist, usw.
 
 - [X] Die Anzahl der Reihen `n` soll ebenfalls einstellbar sein.
 

@@ -9,7 +9,7 @@ package tk.alexander01998.galton_brett.gui;
 
 import java.awt.BorderLayout;
 
-import javax.swing.ImageIcon;
+import javax.swing.Icon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -42,15 +42,10 @@ public class MainFrame extends JFrame
 			@Override
 			public void stateChanged(ChangeEvent e)
 			{
-				switch(tabbedPane.getSelectedIndex())
-				{
-					case 0:
-						GaltonBrett.simulation.stop();
-						break;
-					case 1:
-						GaltonBrett.simulation.start();
-						break;
-				}
+				if(tabbedPane.getSelectedIndex() == 1)
+					GaltonBrett.simulation.start();
+				else
+					GaltonBrett.simulation.stop();
 			}
 		});
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
@@ -59,18 +54,21 @@ public class MainFrame extends JFrame
 		tabbedPane
 			.addTab(
 				"Einstellungen\r\n",
-				new ImageIcon(
-					MainFrame.class
-						.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-information.png")),
+				(Icon) null,
 				settingsPanel, null);
 		
 		simulationCanvas = new SimulationCanvas();
 		tabbedPane
 			.addTab(
 				"Simulation",
-				new ImageIcon(
-					MainFrame.class
-						.getResource("/com/sun/javafx/scene/control/skin/modena/dialog-error.png")),
+				(Icon) null,
 				simulationCanvas, null);
+		
+		HelpPanel helpPanel = new HelpPanel();
+		tabbedPane
+			.addTab(
+				"Hilfe",
+				(Icon) null,
+				helpPanel, null);
 	}
 }
