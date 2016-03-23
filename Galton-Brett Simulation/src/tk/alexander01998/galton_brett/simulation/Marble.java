@@ -21,6 +21,7 @@ public class Marble
 	private int oldPosX, oldPosY;
 	private int timer, timerMax;
 	private Media nextSound;
+	private boolean moving;
 	
 	public Marble(int posX, int posY)
 	{
@@ -80,7 +81,10 @@ public class Marble
 			Entity[][] grid = GaltonBrett.simulation.grid;
 			
 			if(posY >= grid[0].length - 1)
+			{
+				moving = false;
 				return;
+			}
 			
 			if(grid[posX][posY + 1] instanceof Wedge)
 			{
@@ -91,11 +95,13 @@ public class Marble
 				posY += 2;
 				timer = 20;
 				timerMax = 20;
+				moving = true;
 			}else
 			{
 				posY++;
 				timer = 5;
 				timerMax = 5;
+				moving = true;
 				
 			}
 			
@@ -105,8 +111,12 @@ public class Marble
 				nextSound = SoundManager.MARBLE_ON_WOOD;
 			else
 				for(Marble marble : GaltonBrett.simulation.marbles)
-					if(marble.posX == posX && marble.posY == posY + 1)
+					if(!marble.moving && marble.posX == posX
+						&& marble.posY == posY + 1)
+					{
 						nextSound = SoundManager.MARBLE_ON_MARBLE;
+						break;
+					}
 			
 			for(Marble marble : GaltonBrett.simulation.marbles)
 				if(marble != this && marble.posX == posX && marble.posY == posY)
@@ -116,6 +126,8 @@ public class Marble
 					timer = 0;
 					timerMax = 0;
 					nextSound = null;
+					moving = false;
+					break;
 				}
 		}
 	}
