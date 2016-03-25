@@ -11,21 +11,24 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import tk.alexander01998.galton_brett.GaltonBrett;
+import tk.alexander01998.galton_brett.simulation.Simulation;
 
 public class SettingsPanel extends JPanel
 {
+	private JSpinner spinnerN;
+	private JSpinner spinnerP;
+	private JSpinner spinnerM;
+	private JSpinner spinnerH;
+	private JCheckBox chckbxSounds;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -40,15 +43,7 @@ public class SettingsPanel extends JPanel
 			new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JSpinner spinnerN = new JSpinner();
-		spinnerN.addChangeListener(new ChangeListener()
-		{
-			@Override
-			public void stateChanged(ChangeEvent e)
-			{
-				GaltonBrett.simulation.setN((int)spinnerN.getValue());
-			}
-		});
+		spinnerN = new JSpinner();
 		
 		JLabel lblN =
 			new JLabel(
@@ -80,15 +75,7 @@ public class SettingsPanel extends JPanel
 		gbc_lblP.gridy = 1;
 		add(lblP, gbc_lblP);
 		
-		JSpinner spinnerP = new JSpinner();
-		spinnerP.addChangeListener(new ChangeListener()
-		{
-			@Override
-			public void stateChanged(ChangeEvent e)
-			{
-				GaltonBrett.simulation.setP((float)spinnerP.getValue());
-			}
-		});
+		spinnerP = new JSpinner();
 		lblP.setLabelFor(spinnerP);
 		spinnerP.setModel(new SpinnerNumberModel(new Float(
 			GaltonBrett.simulation.getP()), new Float(0F), new Float(1F),
@@ -111,15 +98,7 @@ public class SettingsPanel extends JPanel
 		gbc_lblM.gridy = 2;
 		add(lblM, gbc_lblM);
 		
-		JSpinner spinnerM = new JSpinner();
-		spinnerM.addChangeListener(new ChangeListener()
-		{
-			@Override
-			public void stateChanged(ChangeEvent e)
-			{
-				GaltonBrett.simulation.setM((int)spinnerM.getValue());
-			}
-		});
+		spinnerM = new JSpinner();
 		spinnerM.setModel(new SpinnerNumberModel(new Integer(
 			GaltonBrett.simulation.getM()), new Integer(1), null,
 			new Integer(1)));
@@ -142,15 +121,7 @@ public class SettingsPanel extends JPanel
 		gbc_lblH.gridy = 3;
 		add(lblH, gbc_lblH);
 		
-		JSpinner spinnerH = new JSpinner();
-		spinnerH.addChangeListener(new ChangeListener()
-		{
-			@Override
-			public void stateChanged(ChangeEvent e)
-			{
-				GaltonBrett.simulation.setH((int)spinnerH.getValue());
-			}
-		});
+		spinnerH = new JSpinner();
 		lblH.setLabelFor(spinnerH);
 		spinnerH.setModel(new SpinnerNumberModel(new Integer(
 			GaltonBrett.simulation.getH()), new Integer(1), null,
@@ -163,21 +134,22 @@ public class SettingsPanel extends JPanel
 		gbc_spinnerH.gridy = 3;
 		add(spinnerH, gbc_spinnerH);
 		
-		JCheckBox chckbxSounds = new JCheckBox("Sounds");
-		chckbxSounds.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				GaltonBrett.simulation.setSoundsEnabled(chckbxSounds
-					.isSelected());
-			}
-		});
+		chckbxSounds = new JCheckBox("Sounds");
 		GridBagConstraints gbc_chckbxSounds = new GridBagConstraints();
 		gbc_chckbxSounds.gridwidth = 2;
 		gbc_chckbxSounds.anchor = GridBagConstraints.WEST;
 		gbc_chckbxSounds.gridx = 0;
 		gbc_chckbxSounds.gridy = 4;
 		add(chckbxSounds, gbc_chckbxSounds);
+	}
+	
+	public void updateSettings()
+	{
+		Simulation simulation = GaltonBrett.simulation;
+		simulation.setN((int)spinnerN.getValue());
+		simulation.setP((float)spinnerP.getValue());
+		simulation.setM((int)spinnerM.getValue());
+		simulation.setH((int)spinnerH.getValue());
+		simulation.setSoundsEnabled(chckbxSounds.isSelected());
 	}
 }

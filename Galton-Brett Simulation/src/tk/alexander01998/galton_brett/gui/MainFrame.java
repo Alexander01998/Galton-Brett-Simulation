@@ -22,6 +22,7 @@ import tk.alexander01998.galton_brett.GaltonBrett;
 public class MainFrame extends JFrame
 {
 	public SimulationCanvas simulationCanvas;
+	private SettingsPanel settingsPanel;
 	
 	/**
 	 * Create the frame.
@@ -43,32 +44,22 @@ public class MainFrame extends JFrame
 			public void stateChanged(ChangeEvent e)
 			{
 				if(tabbedPane.getSelectedIndex() == 1)
+				{
+					settingsPanel.updateSettings();
 					GaltonBrett.simulation.start();
-				else
+				}else
 					GaltonBrett.simulation.stop();
 			}
 		});
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
-		SettingsPanel settingsPanel = new SettingsPanel();
-		tabbedPane
-			.addTab(
-				"Einstellungen\r\n",
-				(Icon) null,
-				settingsPanel, null);
+		settingsPanel = new SettingsPanel();
+		tabbedPane.addTab("Einstellungen\r\n", (Icon)null, settingsPanel, null);
 		
 		simulationCanvas = new SimulationCanvas();
-		tabbedPane
-			.addTab(
-				"Simulation",
-				(Icon) null,
-				simulationCanvas, null);
+		tabbedPane.addTab("Simulation", (Icon)null, simulationCanvas, null);
 		
 		HelpPanel helpPanel = new HelpPanel();
-		tabbedPane
-			.addTab(
-				"Hilfe",
-				(Icon) null,
-				helpPanel, null);
+		tabbedPane.addTab("Hilfe", (Icon)null, helpPanel, null);
 	}
 }
