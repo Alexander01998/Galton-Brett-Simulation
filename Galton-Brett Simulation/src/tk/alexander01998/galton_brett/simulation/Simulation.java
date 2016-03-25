@@ -149,16 +149,18 @@ public class Simulation
 		int gridWidth = grid.length * 64, gridHeight = grid[0].length * 64;
 		int canvasWidth = canvas.getWidth(), canvasHeight = canvas.getHeight();
 		
-		// background
-		for(int x = 0; x < canvasWidth; x += 256)
-			for(int y = 0; y < canvasHeight; y += 256)
-				g.drawImage(TextureManager.BACKGROUND, x, y, null);
-		
 		// set rotation
 		AffineTransform oldTransform = g2d.getTransform();
 		g2d.translate((canvasWidth - gridWidth) / 2,
 			(canvasHeight - gridHeight) / 2);
 		g2d.rotate(Math.PI / 4 * (p - 0.5F), gridWidth / 2, gridHeight / 2);
+		
+		// board
+		for(int x = 0; x < gridWidth; x += 256)
+			for(int y = 0; y < gridHeight; y += 256)
+				g.drawImage(TextureManager.BACKGROUND, x, y,
+					Math.min(gridWidth - x, 256),
+					Math.min(gridHeight - y, 256), null);
 		
 		// marbles
 		for(Marble marble : marbles)
