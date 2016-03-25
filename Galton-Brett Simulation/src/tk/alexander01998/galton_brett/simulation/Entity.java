@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
 
 public abstract class Entity
 {
-	private final BufferedImage texture;
+	protected final BufferedImage texture;
 	
 	public Entity(BufferedImage texture)
 	{

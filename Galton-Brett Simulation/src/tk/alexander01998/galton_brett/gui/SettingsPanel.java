@@ -33,11 +33,11 @@ public class SettingsPanel extends JPanel
 	{
 		setForeground(SystemColor.textHighlight);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{156, 0, 0};
-		gridBagLayout.rowHeights = new int[]{26, 0, 26, 0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{156, 128, 0};
+		gridBagLayout.rowHeights = new int[]{26, 0, 0, 26, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights =
-			new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+			new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JLabel lblM =
@@ -112,24 +112,55 @@ public class SettingsPanel extends JPanel
 		gbc_spinnerN.gridy = 1;
 		add(spinnerN, gbc_spinnerN);
 		
-		JLabel lblP =
+		JLabel lblH =
 			new JLabel(
-				"<html>Neigung <code><font size=5>p</font></code>");
+				"<html>H\u00F6he der R\u00F6hren <code><font size=5>h</font></code>");
+		GridBagConstraints gbc_lblH = new GridBagConstraints();
+		gbc_lblH.fill = GridBagConstraints.HORIZONTAL;
+		gbc_lblH.insets = new Insets(0, 0, 5, 5);
+		gbc_lblH.gridx = 0;
+		gbc_lblH.gridy = 2;
+		add(lblH, gbc_lblH);
+		
+		JSpinner spinnerH = new JSpinner();
+		spinnerH.addChangeListener(new ChangeListener()
+		{
+			@Override
+			public void stateChanged(ChangeEvent e)
+			{
+				GaltonBrett.simulation.setH((int)spinnerH.getValue());
+			}
+		});
+		lblH.setLabelFor(spinnerH);
+		spinnerH.setModel(new SpinnerNumberModel(new Integer(
+			GaltonBrett.simulation.getH()), new Integer(1), null,
+			new Integer(1)));
+		GridBagConstraints gbc_spinnerH = new GridBagConstraints();
+		gbc_spinnerH.fill = GridBagConstraints.HORIZONTAL;
+		gbc_spinnerH.anchor = GridBagConstraints.NORTH;
+		gbc_spinnerH.insets = new Insets(0, 0, 5, 0);
+		gbc_spinnerH.gridx = 1;
+		gbc_spinnerH.gridy = 2;
+		add(spinnerH, gbc_spinnerH);
+		
+		JLabel lblP =
+			new JLabel("<html>Neigung <code><font size=5>p</font></code>");
 		lblP.setLabelFor(spinnerP);
 		GridBagConstraints gbc_lblP = new GridBagConstraints();
 		gbc_lblP.fill = GridBagConstraints.HORIZONTAL;
 		gbc_lblP.insets = new Insets(0, 0, 5, 5);
 		gbc_lblP.gridx = 0;
-		gbc_lblP.gridy = 2;
+		gbc_lblP.gridy = 3;
 		add(lblP, gbc_lblP);
-		spinnerP.setModel(new SpinnerNumberModel(new Float(0.5F),
-			new Float(0F), new Float(1F), new Float(0.05F)));
+		spinnerP.setModel(new SpinnerNumberModel(new Float(
+			GaltonBrett.simulation.getP()), new Float(0F), new Float(1F),
+			new Float(0.05F)));
 		GridBagConstraints gbc_spinnerP = new GridBagConstraints();
-		gbc_spinnerP.insets = new Insets(0, 0, 5, 0);
 		gbc_spinnerP.fill = GridBagConstraints.HORIZONTAL;
+		gbc_spinnerP.insets = new Insets(0, 0, 5, 0);
 		gbc_spinnerP.anchor = GridBagConstraints.NORTH;
 		gbc_spinnerP.gridx = 1;
-		gbc_spinnerP.gridy = 2;
+		gbc_spinnerP.gridy = 3;
 		add(spinnerP, gbc_spinnerP);
 		
 		JCheckBox chckbxSounds = new JCheckBox("Sounds");
@@ -138,14 +169,16 @@ public class SettingsPanel extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				GaltonBrett.simulation.setSoundsEnabled(chckbxSounds.isSelected());
+				GaltonBrett.simulation.setSoundsEnabled(chckbxSounds
+					.isSelected());
 			}
 		});
 		GridBagConstraints gbc_chckbxSounds = new GridBagConstraints();
+		gbc_chckbxSounds.gridwidth = 2;
 		gbc_chckbxSounds.anchor = GridBagConstraints.WEST;
 		gbc_chckbxSounds.insets = new Insets(0, 0, 0, 5);
 		gbc_chckbxSounds.gridx = 0;
-		gbc_chckbxSounds.gridy = 3;
+		gbc_chckbxSounds.gridy = 4;
 		add(chckbxSounds, gbc_chckbxSounds);
 	}
 }

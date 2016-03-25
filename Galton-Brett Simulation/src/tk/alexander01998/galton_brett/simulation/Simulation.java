@@ -29,6 +29,7 @@ public class Simulation
 	private int n = 3;
 	private int m = 3;
 	private float p = 0.5F;
+	private int h = 3;
 	private boolean soundsEnabled = false;
 	
 	private Thread thread = new Thread();
@@ -60,14 +61,14 @@ public class Simulation
 	private void build()
 	{
 		// add wedges
-		grid = new Entity[n * 2 + 1][n * 2 + 5];
+		grid = new Entity[n * 2 + 1][n * 2 + 1 + m];
 		for(int y = 0; y < n; y++)
 			for(int x = 0; x < y + 1; x++)
 				grid[n - y + x * 2][y * 2 + 2] = new Wedge();
 		
 		// add tubes
 		for(int i = 0; i < grid.length; i += 2)
-			grid[i][grid[0].length - 4] = new Tube();
+			grid[i][grid[0].length - m] = new Tube();
 		
 		// clear marbles
 		marbles.clear();
@@ -220,6 +221,16 @@ public class Simulation
 		this.p = p;
 	}
 	
+	public int getH()
+	{
+		return h;
+	}
+
+	public void setH(int h)
+	{
+		this.h = h;
+	}
+
 	public boolean areSoundsEnabled()
 	{
 		return soundsEnabled;
