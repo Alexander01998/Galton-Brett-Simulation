@@ -34,6 +34,14 @@ Wenn die Zeit es zulässt, möchte ich außerdem folgende Features in das Programm 
 
 - [ ] ~~Das Programm soll bei einem Fehler eine Fehlermeldung anzeigen.~~
 
+## Screenshots
+
+1. https://cloud.githubusercontent.com/assets/10100202/14046642/ebae7cb2-f2a2-11e5-87bf-674bbc353d26.png
+
+2. https://cloud.githubusercontent.com/assets/10100202/14046737/8cd3205c-f2a3-11e5-8933-9f2bdd9562d5.png
+
+3. https://cloud.githubusercontent.com/assets/10100202/14046776/c6420236-f2a3-11e5-8866-a73f36d4a1b8.png
+
 ## Issues und Pull Requests
 Da ich das Programm alleine erstellen muss, kann ich bei diesem Projekt keine Pull Requests annehmen. Es sollte allerdings kein Problem sein, wenn ich über den Issue Tracker Fragen beantworte.
 
