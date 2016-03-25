@@ -158,11 +158,27 @@ public class Simulation
 		int gridWidth = grid.length * 64, gridHeight = grid[0].length * 64;
 		int canvasWidth = canvas.getWidth(), canvasHeight = canvas.getHeight();
 		
-		// set rotation
+		// rotation
+		double rotationAngle = Math.PI / 4 * (p - 0.5F);
+		
+		// zoom
+		double gridVectorlength =
+			Math.sqrt(gridWidth * gridWidth + gridHeight * gridHeight);
+		double gridVectorAngle =
+			Math.atan((double)gridHeight / (double)gridWidth)
+				+ Math.abs(rotationAngle);
+		double zoom =
+			Math.min(Math.min((double)canvasWidth
+				/ (Math.cos(gridVectorAngle) * gridVectorlength),
+				(double)canvasHeight
+					/ (Math.sin(gridVectorAngle) * gridVectorlength)), 1F);
+		
+		// set rotation & zoom
 		AffineTransform oldTransform = g2d.getTransform();
-		g2d.translate((canvasWidth - gridWidth) / 2,
-			(canvasHeight - gridHeight) / 2);
-		g2d.rotate(Math.PI / 4 * (p - 0.5F), gridWidth / 2, gridHeight / 2);
+		g2d.translate((canvasWidth - gridWidth * zoom) / 2,
+			(canvasHeight - gridHeight * zoom) / 2);
+		g2d.scale(zoom, zoom);
+		g2d.rotate(rotationAngle, gridWidth / 2, gridHeight / 2);
 		
 		// board
 		for(int x = 0; x < gridWidth; x += 256)
@@ -215,22 +231,22 @@ public class Simulation
 	{
 		return m;
 	}
-
+	
 	public void setM(int m)
 	{
 		this.m = m;
 	}
-
+	
 	public int getH()
 	{
 		return h;
 	}
-
+	
 	public void setH(int h)
 	{
 		this.h = h;
 	}
-
+	
 	public boolean areSoundsEnabled()
 	{
 		return soundsEnabled;
