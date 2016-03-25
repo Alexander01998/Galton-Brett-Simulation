@@ -6,7 +6,7 @@ Dieses Programm simuliert graphisch das [Galtonsche Brett](https://de.wikipedia.
 ## Features
 Die Aufgabenstellung lautet wie folgt:
 
-- [ ] Das Programm muss spätestens am 11. April 2016 fertig sein.
+- [X] Das Programm muss spätestens am 11. April 2016 fertig sein.
 
 - [X] Das Programm muss das Galtonbrett graphisch darstellen.
 
