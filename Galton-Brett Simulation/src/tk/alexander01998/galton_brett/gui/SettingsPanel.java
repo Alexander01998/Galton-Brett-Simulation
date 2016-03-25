@@ -11,7 +11,10 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
@@ -31,11 +34,10 @@ public class SettingsPanel extends JPanel
 		setForeground(SystemColor.textHighlight);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{156, 0, 0};
-		gridBagLayout.rowHeights = new int[]{26, 0, 26, 0};
-		gridBagLayout.columnWeights =
-			new double[]{1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowHeights = new int[]{26, 0, 26, 0, 0};
+		gridBagLayout.columnWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights =
-			new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+			new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JLabel lblM =
@@ -116,17 +118,34 @@ public class SettingsPanel extends JPanel
 		lblP.setLabelFor(spinnerP);
 		GridBagConstraints gbc_lblP = new GridBagConstraints();
 		gbc_lblP.fill = GridBagConstraints.HORIZONTAL;
-		gbc_lblP.insets = new Insets(0, 0, 0, 5);
+		gbc_lblP.insets = new Insets(0, 0, 5, 5);
 		gbc_lblP.gridx = 0;
 		gbc_lblP.gridy = 2;
 		add(lblP, gbc_lblP);
 		spinnerP.setModel(new SpinnerNumberModel(new Float(0.5F),
 			new Float(0F), new Float(1F), new Float(0.05F)));
 		GridBagConstraints gbc_spinnerP = new GridBagConstraints();
+		gbc_spinnerP.insets = new Insets(0, 0, 5, 0);
 		gbc_spinnerP.fill = GridBagConstraints.HORIZONTAL;
 		gbc_spinnerP.anchor = GridBagConstraints.NORTH;
 		gbc_spinnerP.gridx = 1;
 		gbc_spinnerP.gridy = 2;
 		add(spinnerP, gbc_spinnerP);
+		
+		JCheckBox chckbxSounds = new JCheckBox("Sounds");
+		chckbxSounds.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				GaltonBrett.simulation.setSoundsEnabled(chckbxSounds.isSelected());
+			}
+		});
+		GridBagConstraints gbc_chckbxSounds = new GridBagConstraints();
+		gbc_chckbxSounds.anchor = GridBagConstraints.WEST;
+		gbc_chckbxSounds.insets = new Insets(0, 0, 0, 5);
+		gbc_chckbxSounds.gridx = 0;
+		gbc_chckbxSounds.gridy = 3;
+		add(chckbxSounds, gbc_chckbxSounds);
 	}
 }

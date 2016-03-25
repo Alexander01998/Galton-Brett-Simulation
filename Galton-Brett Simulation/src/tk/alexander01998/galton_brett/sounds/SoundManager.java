@@ -11,6 +11,8 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
+import tk.alexander01998.galton_brett.GaltonBrett;
+
 public class SoundManager
 {
 	public static final Clip MARBLE_ON_WOOD = getSound("kugel-auf-holz");
@@ -19,7 +21,7 @@ public class SoundManager
 	
 	public static void play(Clip sound)
 	{
-		if(sound == null)
+		if(sound == null || !GaltonBrett.simulation.areSoundsEnabled())
 			return;
 		
 		sound.stop();

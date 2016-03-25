@@ -22,9 +22,12 @@ public class Simulation
 	public Entity[][] grid;
 	public ArrayList<Marble> marbles = new ArrayList<>();
 	public double tickTime, frameTime;
+	
 	private int n = 3;
 	private int m = 3;
 	private float p = 0.5F;
+	private boolean soundsEnabled = false;
+	
 	private Thread thread = new Thread();
 	
 	public void start()
@@ -192,5 +195,15 @@ public class Simulation
 	public void setP(float p)
 	{
 		this.p = p;
+	}
+
+	public boolean areSoundsEnabled()
+	{
+		return soundsEnabled;
+	}
+
+	public void setSoundsEnabled(boolean soundsEnabled)
+	{
+		this.soundsEnabled = soundsEnabled;
 	}
 }

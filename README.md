@@ -10,7 +10,7 @@ Die Aufgabenstellung lautet wie folgt:
 
 - [X] Das Programm muss das Galtonbrett graphisch darstellen.
 
-- [ ] Das Programm muss nutzerfreundlich sein.
+- [X] Das Programm muss nutzerfreundlich sein.
 
 - [X] Man muss die Anzahl der Kugeln einstellen können.
 
@@ -22,13 +22,13 @@ Die Aufgabenstellung lautet wie folgt:
 
 Wenn die Zeit es zulässt, möchte ich außerdem folgende Features in das Programm einbauen:
 
-- [ ] Das Programm soll Sounds haben, die man in den Einstellungen an- und ausschalten kann.
+- [X] Das Programm soll Sounds haben, die man in den Einstellungen an- und ausschalten kann.
 
 - [ ] Das Programm soll eine (evtl. automatische) Zoom-Funktion haben, damit auch größere Simulationen auf den Bildschirm passen.
 
 - [X] Die Wahrscheinlichkeit `p` soll ebenfalls einstellbar sein.
 
-- [ ] Die Simulationsgeschwindigkeit soll einstellbar sein.
+- [ ] ~~Die Simulationsgeschwindigkeit soll einstellbar sein.~~
 
 - [ ] Das Programm soll eine Website haben.
 
