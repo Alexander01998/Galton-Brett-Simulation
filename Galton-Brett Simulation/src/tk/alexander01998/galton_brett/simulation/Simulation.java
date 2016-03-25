@@ -26,10 +26,10 @@ public class Simulation
 	public double tickTime, frameTime;
 	private int spawnTimer = 0;
 	
-	private int n = 3;
+	private int n = 10;
 	private float p = 0.5F;
-	private int m = 3;
-	private int h = 3;
+	private int m = 20;
+	private int h = 8;
 	private boolean soundsEnabled = false;
 	
 	private Thread thread = new Thread();
