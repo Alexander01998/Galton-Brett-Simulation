@@ -61,14 +61,14 @@ public class Simulation
 	private void build()
 	{
 		// add wedges
-		grid = new Entity[n * 2 + 1][n * 2 + 1 + m];
+		grid = new Entity[n * 2 + 1][n * 2 + 1 + h];
 		for(int y = 0; y < n; y++)
 			for(int x = 0; x < y + 1; x++)
 				grid[n - y + x * 2][y * 2 + 2] = new Wedge();
 		
 		// add tubes
 		for(int i = 0; i < grid.length; i += 2)
-			grid[i][grid[0].length - m] = new Tube();
+			grid[i][grid[0].length - h] = new Tube();
 		
 		// clear marbles
 		marbles.clear();
