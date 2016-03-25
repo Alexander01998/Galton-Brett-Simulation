@@ -24,15 +24,15 @@ Wenn die Zeit es zulässt, möchte ich außerdem folgende Features in das Programm 
 
 - [X] Das Programm soll Sounds haben, die man in den Einstellungen an- und ausschalten kann.
 
-- [ ] Das Programm soll eine (evtl. automatische) Zoom-Funktion haben, damit auch größere Simulationen auf den Bildschirm passen.
+- [X] Das Programm soll eine (evtl. automatische) Zoom-Funktion haben, damit auch größere Simulationen auf den Bildschirm passen.
 
 - [X] Die Wahrscheinlichkeit `p` soll ebenfalls einstellbar sein.
 
 - [ ] ~~Die Simulationsgeschwindigkeit soll einstellbar sein.~~
 
-- [ ] Das Programm soll eine Website haben.
+- [ ] ~~Das Programm soll eine Website haben.~~
 
-- [ ] Das Programm soll bei einem Fehler eine Fehlermeldung anzeigen.
+- [ ] ~~Das Programm soll bei einem Fehler eine Fehlermeldung anzeigen.~~
 
 ## Issues und Pull Requests
 Da ich das Programm alleine erstellen muss, kann ich bei diesem Projekt keine Pull Requests annehmen. Es sollte allerdings kein Problem sein, wenn ich über den Issue Tracker Fragen beantworte.
