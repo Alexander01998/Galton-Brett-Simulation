@@ -9,18 +9,18 @@ package tk.alexander01998.galton_brett.simulation;
 
 import java.awt.Graphics;
 
-import javafx.scene.media.Media;
+import javax.sound.sampled.Clip;
+
 import tk.alexander01998.galton_brett.GaltonBrett;
 import tk.alexander01998.galton_brett.gui.TextureManager;
 import tk.alexander01998.galton_brett.sounds.SoundManager;
 
-@SuppressWarnings("restriction")
 public class Marble
 {
 	private int posX, posY;
 	private int oldPosX, oldPosY;
 	private int timer, timerMax;
-	private Media nextSound;
+	private Clip nextSound;
 	private boolean moving;
 	
 	public Marble(int posX, int posY)

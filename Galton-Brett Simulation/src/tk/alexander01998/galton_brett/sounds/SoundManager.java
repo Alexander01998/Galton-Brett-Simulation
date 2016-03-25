@@ -7,31 +7,40 @@
  */
 package tk.alexander01998.galton_brett.sounds;
 
-import javafx.scene.media.Media;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
-@SuppressWarnings("restriction")
 public class SoundManager
 {
-	public static final Media MARBLE_ON_WOOD = getSound("kugel-auf-holz");
-	public static final Media MARBLE_ON_GLASS = getSound("kugel-auf-glas");
-	public static final Media MARBLE_ON_MARBLE = getSound("kugel-auf-kugel");
+	public static final Clip MARBLE_ON_WOOD = getSound("kugel-auf-holz");
+	public static final Clip MARBLE_ON_GLASS = getSound("kugel-auf-glas");
+	public static final Clip MARBLE_ON_MARBLE = getSound("kugel-auf-kugel");
 	
-	public static void initialize()
+	public static void play(Clip sound)
 	{
-		// initialize JavaFX
-		// new JFXPanel();
+		if(sound == null)
+			return;
+		
+		sound.stop();
+		sound.setFramePosition(0);
+		sound.start();
 	}
 	
-	public static void play(Media sound)
+	private static Clip getSound(String name)
 	{
-		// MediaPlayer player = new MediaPlayer(sound);
-		// player.play();
-	}
-	
-	private static Media getSound(String name)
-	{
-		return null;
-		// return new Media(SoundManager.class.getClassLoader()
-		// .getResource("sounds/" + name + ".mp3").toString());
+		try
+		{
+			AudioInputStream input =
+				AudioSystem.getAudioInputStream(SoundManager.class
+					.getClassLoader().getResource("sounds/" + name + ".wav"));
+			Clip clip = AudioSystem.getClip();
+			clip.open(input);
+			return clip;
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
