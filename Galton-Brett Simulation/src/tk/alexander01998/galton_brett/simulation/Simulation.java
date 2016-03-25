@@ -24,6 +24,7 @@ public class Simulation
 	public Entity[][] grid;
 	public ArrayList<Marble> marbles = new ArrayList<>();
 	public double tickTime, frameTime;
+	private int spawnTimer = 0;
 	
 	private int n = 3;
 	private int m = 3;
@@ -59,19 +60,17 @@ public class Simulation
 	private void build()
 	{
 		// add wedges
-		grid = new Entity[n * 2 + 1][n * 2 + 4];
+		grid = new Entity[n * 2 + 1][n * 2 + 5];
 		for(int y = 0; y < n; y++)
 			for(int x = 0; x < y + 1; x++)
-				grid[n - y + x * 2][y * 2 + 1] = new Wedge();
+				grid[n - y + x * 2][y * 2 + 2] = new Wedge();
 		
 		// add tubes
 		for(int i = 0; i < grid.length; i += 2)
 			grid[i][grid[0].length - 4] = new Tube();
 		
-		// add marbles
+		// clear marbles
 		marbles.clear();
-		for(int i = 0; i < m; i++)
-			marbles.add(new Marble(n, -1));
 		
 		// set panel size
 		Dimension size = new Dimension(grid.length * 64, grid[0].length * 64);
@@ -129,6 +128,15 @@ public class Simulation
 	
 	private void tick()
 	{
+		if(spawnTimer > 0)
+			spawnTimer--;
+		else
+		{
+			if(marbles.size() < m)
+				marbles.add(new Marble(n, 0));
+			spawnTimer = 15;
+		}
+		
 		for(Marble marble : marbles)
 			marble.update();
 	}
