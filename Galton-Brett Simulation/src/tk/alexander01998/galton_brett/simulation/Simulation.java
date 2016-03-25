@@ -9,6 +9,8 @@ package tk.alexander01998.galton_brett.simulation;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
@@ -133,25 +135,34 @@ public class Simulation
 	
 	private void render(float partialTicks)
 	{
-		SimulationCanvas simulationCanvas = GaltonBrett.frame.simulationCanvas;
-		BufferStrategy bs = simulationCanvas.getBufferStrategy();
+		SimulationCanvas canvas = GaltonBrett.frame.simulationCanvas;
+		BufferStrategy bs = canvas.getBufferStrategy();
 		if(bs == null)
 		{
-			simulationCanvas.createBufferStrategy(3);
+			canvas.createBufferStrategy(3);
 			return;
 		}
 		Graphics g = bs.getDrawGraphics();
+		Graphics2D g2d = (Graphics2D)g;
+		
+		// width & height
+		int width = grid.length * 64;
+		int height = grid[0].length * 64;
 		
 		// background
-		for(int x = 0; x < simulationCanvas.getWidth(); x += 256)
-			for(int y = 0; y < simulationCanvas.getHeight(); y += 256)
+		for(int x = 0; x < canvas.getWidth(); x += 256)
+			for(int y = 0; y < canvas.getHeight(); y += 256)
 				g.drawImage(TextureManager.BACKGROUND, x, y, null);
+		
+		// set rotation
+		AffineTransform oldTransform = g2d.getTransform();
+		g2d.rotate(Math.PI / 4 * (p - 0.5F), width / 2, height / 2);
 		
 		// marbles
 		for(Marble marble : marbles)
 			marble.render(g, partialTicks);
 		
-		// wedges & tubes
+		// static entities
 		for(int x = 0; x < grid.length; x++)
 			for(int y = 0; y < grid[x].length; y++)
 			{
@@ -161,7 +172,10 @@ public class Simulation
 			}
 		
 		// border
-		g.drawRect(0, 0, grid.length * 64, grid[0].length * 64);
+		g.drawRect(0, 0, width, height);
+		
+		// reset rotation
+		g2d.setTransform(oldTransform);
 		
 		g.dispose();
 		bs.show();

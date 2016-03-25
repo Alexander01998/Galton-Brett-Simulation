@@ -114,7 +114,7 @@ public class SettingsPanel extends JPanel
 		
 		JLabel lblP =
 			new JLabel(
-				"<html>Wahrscheinlichkeit <code><font size=5>p</font></code>");
+				"<html>Neigung <code><font size=5>p</font></code>");
 		lblP.setLabelFor(spinnerP);
 		GridBagConstraints gbc_lblP = new GridBagConstraints();
 		gbc_lblP.fill = GridBagConstraints.HORIZONTAL;
