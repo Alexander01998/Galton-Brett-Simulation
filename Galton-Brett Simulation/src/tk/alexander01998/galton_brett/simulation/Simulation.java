@@ -27,8 +27,8 @@ public class Simulation
 	private int spawnTimer = 0;
 	
 	private int n = 3;
-	private int m = 3;
 	private float p = 0.5F;
+	private int m = 3;
 	private int h = 3;
 	private boolean soundsEnabled = false;
 	
@@ -201,16 +201,6 @@ public class Simulation
 		this.n = n;
 	}
 	
-	public int getM()
-	{
-		return m;
-	}
-	
-	public void setM(int m)
-	{
-		this.m = m;
-	}
-	
 	public float getP()
 	{
 		return p;
@@ -221,6 +211,16 @@ public class Simulation
 		this.p = p;
 	}
 	
+	public int getM()
+	{
+		return m;
+	}
+
+	public void setM(int m)
+	{
+		this.m = m;
+	}
+
 	public int getH()
 	{
 		return h;

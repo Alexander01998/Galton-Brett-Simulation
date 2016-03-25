@@ -34,52 +34,11 @@ public class SettingsPanel extends JPanel
 		setForeground(SystemColor.textHighlight);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{156, 128, 0};
-		gridBagLayout.rowHeights = new int[]{26, 0, 0, 26, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 26, 26, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights =
 			new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
-		
-		JLabel lblM =
-			new JLabel(
-				"<html>Anzahl der Kugeln <code><font size=5>m</font></code>");
-		GridBagConstraints gbc_lblM = new GridBagConstraints();
-		gbc_lblM.fill = GridBagConstraints.HORIZONTAL;
-		gbc_lblM.insets = new Insets(0, 0, 5, 5);
-		gbc_lblM.gridx = 0;
-		gbc_lblM.gridy = 0;
-		add(lblM, gbc_lblM);
-		
-		JSpinner spinnerM = new JSpinner();
-		lblM.setLabelFor(spinnerM);
-		spinnerM.addChangeListener(new ChangeListener()
-		{
-			@Override
-			public void stateChanged(ChangeEvent e)
-			{
-				GaltonBrett.simulation.setM((int)spinnerM.getValue());
-			}
-		});
-		spinnerM.setModel(new SpinnerNumberModel(new Integer(
-			GaltonBrett.simulation.getM()), new Integer(1), null,
-			new Integer(1)));
-		GridBagConstraints gbc_spinnerM = new GridBagConstraints();
-		gbc_spinnerM.fill = GridBagConstraints.HORIZONTAL;
-		gbc_spinnerM.anchor = GridBagConstraints.NORTH;
-		gbc_spinnerM.insets = new Insets(0, 0, 5, 0);
-		gbc_spinnerM.gridx = 1;
-		gbc_spinnerM.gridy = 0;
-		add(spinnerM, gbc_spinnerM);
-		
-		JSpinner spinnerP = new JSpinner();
-		spinnerP.addChangeListener(new ChangeListener()
-		{
-			@Override
-			public void stateChanged(ChangeEvent e)
-			{
-				GaltonBrett.simulation.setP((float)spinnerP.getValue());
-			}
-		});
 		
 		JSpinner spinnerN = new JSpinner();
 		spinnerN.addChangeListener(new ChangeListener()
@@ -99,7 +58,7 @@ public class SettingsPanel extends JPanel
 		gbc_lblN.fill = GridBagConstraints.HORIZONTAL;
 		gbc_lblN.insets = new Insets(0, 0, 5, 5);
 		gbc_lblN.gridx = 0;
-		gbc_lblN.gridy = 1;
+		gbc_lblN.gridy = 0;
 		add(lblN, gbc_lblN);
 		spinnerN.setModel(new SpinnerNumberModel(new Integer(
 			GaltonBrett.simulation.getN()), new Integer(1), null,
@@ -109,8 +68,69 @@ public class SettingsPanel extends JPanel
 		gbc_spinnerN.anchor = GridBagConstraints.NORTH;
 		gbc_spinnerN.insets = new Insets(0, 0, 5, 0);
 		gbc_spinnerN.gridx = 1;
-		gbc_spinnerN.gridy = 1;
+		gbc_spinnerN.gridy = 0;
 		add(spinnerN, gbc_spinnerN);
+		
+		JLabel lblP =
+			new JLabel("<html>Neigung <code><font size=5>p</font></code>");
+		GridBagConstraints gbc_lblP = new GridBagConstraints();
+		gbc_lblP.fill = GridBagConstraints.HORIZONTAL;
+		gbc_lblP.insets = new Insets(0, 0, 5, 5);
+		gbc_lblP.gridx = 0;
+		gbc_lblP.gridy = 1;
+		add(lblP, gbc_lblP);
+		
+		JSpinner spinnerP = new JSpinner();
+		spinnerP.addChangeListener(new ChangeListener()
+		{
+			@Override
+			public void stateChanged(ChangeEvent e)
+			{
+				GaltonBrett.simulation.setP((float)spinnerP.getValue());
+			}
+		});
+		lblP.setLabelFor(spinnerP);
+		spinnerP.setModel(new SpinnerNumberModel(new Float(
+			GaltonBrett.simulation.getP()), new Float(0F), new Float(1F),
+			new Float(0.05F)));
+		GridBagConstraints gbc_spinnerP = new GridBagConstraints();
+		gbc_spinnerP.fill = GridBagConstraints.HORIZONTAL;
+		gbc_spinnerP.insets = new Insets(0, 0, 5, 0);
+		gbc_spinnerP.anchor = GridBagConstraints.NORTH;
+		gbc_spinnerP.gridx = 1;
+		gbc_spinnerP.gridy = 1;
+		add(spinnerP, gbc_spinnerP);
+		
+		JLabel lblM =
+			new JLabel(
+				"<html>Anzahl der Kugeln <code><font size=5>m</font></code>");
+		GridBagConstraints gbc_lblM = new GridBagConstraints();
+		gbc_lblM.fill = GridBagConstraints.HORIZONTAL;
+		gbc_lblM.insets = new Insets(0, 0, 5, 5);
+		gbc_lblM.gridx = 0;
+		gbc_lblM.gridy = 2;
+		add(lblM, gbc_lblM);
+		
+		JSpinner spinnerM = new JSpinner();
+		spinnerM.addChangeListener(new ChangeListener()
+		{
+			@Override
+			public void stateChanged(ChangeEvent e)
+			{
+				GaltonBrett.simulation.setM((int)spinnerM.getValue());
+			}
+		});
+		spinnerM.setModel(new SpinnerNumberModel(new Integer(
+			GaltonBrett.simulation.getM()), new Integer(1), null,
+			new Integer(1)));
+		GridBagConstraints gbc_spinnerM = new GridBagConstraints();
+		gbc_spinnerM.fill = GridBagConstraints.HORIZONTAL;
+		gbc_spinnerM.anchor = GridBagConstraints.NORTH;
+		gbc_spinnerM.insets = new Insets(0, 0, 5, 0);
+		gbc_spinnerM.gridx = 1;
+		gbc_spinnerM.gridy = 2;
+		add(spinnerM, gbc_spinnerM);
+		lblM.setLabelFor(spinnerM);
 		
 		JLabel lblH =
 			new JLabel(
@@ -119,7 +139,7 @@ public class SettingsPanel extends JPanel
 		gbc_lblH.fill = GridBagConstraints.HORIZONTAL;
 		gbc_lblH.insets = new Insets(0, 0, 5, 5);
 		gbc_lblH.gridx = 0;
-		gbc_lblH.gridy = 2;
+		gbc_lblH.gridy = 3;
 		add(lblH, gbc_lblH);
 		
 		JSpinner spinnerH = new JSpinner();
@@ -140,28 +160,8 @@ public class SettingsPanel extends JPanel
 		gbc_spinnerH.anchor = GridBagConstraints.NORTH;
 		gbc_spinnerH.insets = new Insets(0, 0, 5, 0);
 		gbc_spinnerH.gridx = 1;
-		gbc_spinnerH.gridy = 2;
+		gbc_spinnerH.gridy = 3;
 		add(spinnerH, gbc_spinnerH);
-		
-		JLabel lblP =
-			new JLabel("<html>Neigung <code><font size=5>p</font></code>");
-		lblP.setLabelFor(spinnerP);
-		GridBagConstraints gbc_lblP = new GridBagConstraints();
-		gbc_lblP.fill = GridBagConstraints.HORIZONTAL;
-		gbc_lblP.insets = new Insets(0, 0, 5, 5);
-		gbc_lblP.gridx = 0;
-		gbc_lblP.gridy = 3;
-		add(lblP, gbc_lblP);
-		spinnerP.setModel(new SpinnerNumberModel(new Float(
-			GaltonBrett.simulation.getP()), new Float(0F), new Float(1F),
-			new Float(0.05F)));
-		GridBagConstraints gbc_spinnerP = new GridBagConstraints();
-		gbc_spinnerP.fill = GridBagConstraints.HORIZONTAL;
-		gbc_spinnerP.insets = new Insets(0, 0, 5, 0);
-		gbc_spinnerP.anchor = GridBagConstraints.NORTH;
-		gbc_spinnerP.gridx = 1;
-		gbc_spinnerP.gridy = 3;
-		add(spinnerP, gbc_spinnerP);
 		
 		JCheckBox chckbxSounds = new JCheckBox("Sounds");
 		chckbxSounds.addActionListener(new ActionListener()
@@ -176,7 +176,6 @@ public class SettingsPanel extends JPanel
 		GridBagConstraints gbc_chckbxSounds = new GridBagConstraints();
 		gbc_chckbxSounds.gridwidth = 2;
 		gbc_chckbxSounds.anchor = GridBagConstraints.WEST;
-		gbc_chckbxSounds.insets = new Insets(0, 0, 0, 5);
 		gbc_chckbxSounds.gridx = 0;
 		gbc_chckbxSounds.gridy = 4;
 		add(chckbxSounds, gbc_chckbxSounds);
