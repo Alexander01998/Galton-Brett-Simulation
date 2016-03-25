@@ -146,17 +146,19 @@ public class Simulation
 		Graphics2D g2d = (Graphics2D)g;
 		
 		// width & height
-		int width = grid.length * 64;
-		int height = grid[0].length * 64;
+		int gridWidth = grid.length * 64, gridHeight = grid[0].length * 64;
+		int canvasWidth = canvas.getWidth(), canvasHeight = canvas.getHeight();
 		
 		// background
-		for(int x = 0; x < canvas.getWidth(); x += 256)
-			for(int y = 0; y < canvas.getHeight(); y += 256)
+		for(int x = 0; x < canvasWidth; x += 256)
+			for(int y = 0; y < canvasHeight; y += 256)
 				g.drawImage(TextureManager.BACKGROUND, x, y, null);
 		
 		// set rotation
 		AffineTransform oldTransform = g2d.getTransform();
-		g2d.rotate(Math.PI / 4 * (p - 0.5F), width / 2, height / 2);
+		g2d.translate((canvasWidth - gridWidth) / 2,
+			(canvasHeight - gridHeight) / 2);
+		g2d.rotate(Math.PI / 4 * (p - 0.5F), gridWidth / 2, gridHeight / 2);
 		
 		// marbles
 		for(Marble marble : marbles)
@@ -172,7 +174,7 @@ public class Simulation
 			}
 		
 		// border
-		g.drawRect(0, 0, width, height);
+		g.drawRect(0, 0, gridWidth, gridHeight);
 		
 		// reset rotation
 		g2d.setTransform(oldTransform);
@@ -180,42 +182,42 @@ public class Simulation
 		g.dispose();
 		bs.show();
 	}
-
+	
 	public int getN()
 	{
 		return n;
 	}
-
+	
 	public void setN(int n)
 	{
 		this.n = n;
 	}
-
+	
 	public int getM()
 	{
 		return m;
 	}
-
+	
 	public void setM(int m)
 	{
 		this.m = m;
 	}
-
+	
 	public float getP()
 	{
 		return p;
 	}
-
+	
 	public void setP(float p)
 	{
 		this.p = p;
 	}
-
+	
 	public boolean areSoundsEnabled()
 	{
 		return soundsEnabled;
 	}
-
+	
 	public void setSoundsEnabled(boolean soundsEnabled)
 	{
 		this.soundsEnabled = soundsEnabled;
