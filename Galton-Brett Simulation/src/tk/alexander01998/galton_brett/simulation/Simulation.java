@@ -175,9 +175,6 @@ public class Simulation
 					entity.render(g, x, y);
 			}
 		
-		// border
-		g.drawRect(0, 0, gridWidth, gridHeight);
-		
 		// reset rotation
 		g2d.setTransform(oldTransform);
 		
